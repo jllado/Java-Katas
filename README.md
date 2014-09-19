@@ -28,3 +28,13 @@ everywhere are queueing up with shopping baskets overflow-
 ing with Potter books. Your mission is to write a piece of
 code to calculate the price of any conceivable shopping basket,
 giving as big a discount as possible.
+
+Kata: FizzBuzz
+
+Return “fizz”, “buzz” or “fizzbuzz”.
+
+For a given natural number greater than zero return:
+- “fizz” if the number is dividable by 3
+- “buzz” if the number is dividable by 5
+- “fizzbuzz” if the number is dividable by 15
+- the same number if no other requirement is fulfilled
