@@ -13,8 +13,8 @@ public class ColorCodeValidator {
     }
 
     public String getMatches(String colorsCodeToCheck) {
-        MatcherResult colorsAndPositionMatches = getMatchersColorAndPosition(colorsCodeToCheck);
-        MatcherResult colorsMatches = getMatchersColor(
+        MatcherResult colorsAndPositionMatches = getColorsAndPositionMatches(colorsCodeToCheck);
+        MatcherResult colorsMatches = getColorMatches(
                 colorsAndPositionMatches.getMismatchedColorsCode(),
                 colorsAndPositionMatches.getColorsCodeToCheckThatMismatched());
 
@@ -25,7 +25,7 @@ public class ColorCodeValidator {
         return matchAllTheColorsAndPosition(colorsCodeToCheck);
     }
 
-    private MatcherResult getMatchersColorAndPosition(String colorsCodeToCheck) {
+    private MatcherResult getColorsAndPositionMatches(String colorsCodeToCheck) {
         StringBuilder result = new StringBuilder();
         StringBuilder mismatchedColorsCode = new StringBuilder();
         StringBuilder colorsCodeToCheckThatMismatched = new StringBuilder();
@@ -44,7 +44,7 @@ public class ColorCodeValidator {
         return this.colorsCode.charAt(i) == code.charAt(i);
     }
 
-    private MatcherResult getMatchersColor(String colorsCode, String colorsCodeToCheck) {
+    private MatcherResult getColorMatches(String colorsCode, String colorsCodeToCheck) {
         StringBuilder result = new StringBuilder();
         String mismatchedColorsCode = colorsCode;
         for (char color : colorsCodeToCheck.toCharArray()) {
@@ -66,10 +66,10 @@ public class ColorCodeValidator {
     }
 
     private Boolean matchAllTheColorsAndPosition(String colorsCodeToCheck) {
-        return getMatches(colorsCodeToCheck).equals(validMatchers());
+        return validResult().equals(getMatches(colorsCodeToCheck));
     }
 
-    private String validMatchers() {
+    private String validResult() {
         StringBuilder validMatchers = new StringBuilder();
         for (int i = 0; i < this.colorsCode.length(); i++) {
             validMatchers.append("X");
