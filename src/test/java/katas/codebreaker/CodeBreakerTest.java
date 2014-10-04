@@ -1,8 +1,11 @@
-package kata.codebreaker;
+package katas.codebreaker;
 
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import katas.codebreaker.CodeBreaker;
+import katas.codebreaker.ColorsCodeGenerator;
+import katas.codebreaker.InputSystem;
 
 import org.junit.Before;
 import org.junit.Test;

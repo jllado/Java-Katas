@@ -1,7 +1,8 @@
-package kata.codebreaker;
+package katas.codebreaker;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
+import katas.codebreaker.ColorCodeValidator;
 
 import org.junit.Test;
 

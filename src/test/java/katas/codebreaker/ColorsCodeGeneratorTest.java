@@ -1,4 +1,4 @@
-package kata.codebreaker;
+package katas.codebreaker;
 
 import static org.hamcrest.CoreMatchers.hasItem;
 import static org.hamcrest.Matchers.hasItems;
@@ -7,6 +7,8 @@ import static org.junit.Assert.assertThat;
 
 import java.util.Arrays;
 import java.util.List;
+
+import katas.codebreaker.ColorsCodeGenerator;
 
 import org.junit.Before;
 import org.junit.Test;

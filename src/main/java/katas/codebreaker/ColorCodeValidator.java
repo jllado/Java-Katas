@@ -1,4 +1,4 @@
-package kata.codebreaker;
+package katas.codebreaker;
 
 
 public class ColorCodeValidator {

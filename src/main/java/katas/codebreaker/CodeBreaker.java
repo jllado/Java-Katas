@@ -1,4 +1,4 @@
-package kata.codebreaker;
+package katas.codebreaker;
 
 import java.util.Arrays;
 import java.util.List;
