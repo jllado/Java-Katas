@@ -11,15 +11,15 @@ public class PrimeFactors {
     }
 
     public List<Integer> list() {
-        return loadPrimeFactorsOf(this.value);
+        return getPrimeFactorsOf(this.value);
     }
 
-    private List<Integer> loadPrimeFactorsOf(int number) {
+    private List<Integer> getPrimeFactorsOf(int number) {
         List<Integer> primeFactors = new ArrayList<>();
         if (number != 1) {
             PrimeFactor firstPrimeFactor = getFirstPrimeFactorOf(number);
             primeFactors.add(firstPrimeFactor.getInt());
-            primeFactors.addAll(loadPrimeFactorsOf(number / firstPrimeFactor.getInt()));
+            primeFactors.addAll(getPrimeFactorsOf(number / firstPrimeFactor.getInt()));
         }
         return primeFactors;
     }
