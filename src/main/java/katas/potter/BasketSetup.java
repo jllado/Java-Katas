@@ -1,6 +1,5 @@
 package katas.potter;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,10 +43,10 @@ public class BasketSetup {
         return bookSets;
     }
 
-    public BigDecimal price() {
-        BigDecimal price = new BigDecimal("0");
+    public BookPrice price() {
+        BookPrice price = new BookPrice();
         for (BookSet bookSet : bookSets) {
-            price = price.add(bookSet.price());
+            price.add(bookSet.price());
         }
         return price;
     }

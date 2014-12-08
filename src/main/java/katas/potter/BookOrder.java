@@ -1,6 +1,5 @@
 package katas.potter;
 
-import java.math.BigDecimal;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
@@ -13,12 +12,12 @@ public class BookOrder {
 
     public BookOrder() {
         copiesSize = 0;
-        bookBasket = new LinkedHashMap<Book, Integer>();
+        bookBasket = new LinkedHashMap<>();
     }
 
     public BookOrder(BookOrder order) {
         copiesSize = order.copiesSize();
-        bookBasket = new LinkedHashMap<Book, Integer>(order.getBookBasket());
+        bookBasket = new LinkedHashMap<>(order.getBookBasket());
     }
 
     public void add(int size, Book book) {
@@ -60,19 +59,15 @@ public class BookOrder {
         return getBestPriceFromSetups().floatValue();
     }
 
-    private BigDecimal getBestPriceFromSetups() {
-        BigDecimal bestPrice = new BigDecimal("0");
+    private BookPrice getBestPriceFromSetups() {
+        BookPrice bestPrice = new BookPrice();
         for (int bookSetSize = 1; bookSetSize <= booksSize(); bookSetSize++) {
-            BigDecimal priceSetup = BasketSetup.createBy(this, bookSetSize).price();
-            if (bestPriceOf(priceSetup, bestPrice)) {
+            BookPrice priceSetup = BasketSetup.createBy(this, bookSetSize).price();
+            if (priceSetup.isBestThan(bestPrice)) {
                 bestPrice = priceSetup;
             }
         }
         return bestPrice;
-    }
-
-    private boolean bestPriceOf(BigDecimal setupPrice, BigDecimal bestPrice) {
-        return bestPrice.equals(BigDecimal.ZERO) || setupPrice.compareTo(bestPrice) < 0;
     }
 
 }

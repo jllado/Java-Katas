@@ -6,14 +6,6 @@ import java.util.List;
 
 public class BookSet {
 
-    private BigDecimal[] discounts = {
-            new BigDecimal("0"),
-            new BigDecimal("1"),
-            new BigDecimal("0.95"),
-            new BigDecimal("0.9"),
-            new BigDecimal("0.8"),
-            new BigDecimal("0.75") };
-
     private List<Book> books;
 
     public BookSet() {
@@ -47,8 +39,12 @@ public class BookSet {
         return books;
     }
 
-    public BigDecimal price() {
-        return discounts[size()].multiply(new BigDecimal(Book.PRIZE * size()));
+    public BookPrice price() {
+        BookDiscount sizeDiscount = BookDiscounts.getBy(size());
+        BookPrice bookSetPrice = BookPrice.getDefaultPrice();
+        bookSetPrice.multiplyBy(size());
+        bookSetPrice.apply(sizeDiscount);
+        return bookSetPrice;
     }
 
 }

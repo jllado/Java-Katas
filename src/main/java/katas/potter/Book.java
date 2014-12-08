@@ -1,7 +1,6 @@
 package katas.potter;
 
 public class Book {
-    public static final int PRIZE = 8;
 
     public static final Book BOOK1 = new Book("Book 1");
     public static final Book BOOK2 = new Book("Book 2");
