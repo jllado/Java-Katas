@@ -76,7 +76,7 @@ public class BookOrderTest {
         bookOrder.removeBooksBy(BookSet.createBy(bookOrder, 1));
 
         assertThat(bookOrder.copiesSize(), is(1));
-        assertThat(bookOrder.getBookBasket().size(), is(1));
+        assertThat(bookOrder.size(), is(1));
     }
 
     @Test
@@ -87,6 +87,6 @@ public class BookOrderTest {
         bookOrder.removeBooksBy(BookSet.createBy(bookOrder, 2));
 
         assertThat(bookOrder.copiesSize(), is(0));
-        assertThat(bookOrder.getBookBasket().size(), is(0));
+        assertThat(bookOrder.size(), is(0));
     }
 }

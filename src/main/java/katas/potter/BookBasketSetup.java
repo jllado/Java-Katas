@@ -3,16 +3,16 @@ package katas.potter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BasketSetup {
+public class BookBasketSetup {
 
     private List<BookSet> bookSets;
 
-    public BasketSetup() {
+    public BookBasketSetup() {
         bookSets = new ArrayList<>();
     }
 
-    public static BasketSetup createBy(BookOrder bookOrder, int bookSetSize) {
-        BasketSetup basketSetup = new BasketSetup();
+    public static BookBasketSetup createBy(BookOrder bookOrder, int bookSetSize) {
+        BookBasketSetup basketSetup = new BookBasketSetup();
 
         BookOrder newBookOrder = new BookOrder(bookOrder);
         while (basketSetup.isThereBooksIn(newBookOrder)) {
