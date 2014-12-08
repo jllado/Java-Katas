@@ -14,11 +14,11 @@ public class BookSetTest {
     @Before
     public void setUp() {
         bookOrder = new BookOrder();
-        bookOrder.add(2, new Book(Book.BOOK1));
-        bookOrder.add(2, new Book(Book.BOOK3));
-        bookOrder.add(2, new Book(Book.BOOK2));
-        bookOrder.add(1, new Book(Book.BOOK4));
-        bookOrder.add(1, new Book(Book.BOOK5));
+        bookOrder.add(2, Book.BOOK1);
+        bookOrder.add(2, Book.BOOK3);
+        bookOrder.add(2, Book.BOOK2);
+        bookOrder.add(1, Book.BOOK4);
+        bookOrder.add(1, Book.BOOK5);
     }
 
     @Test

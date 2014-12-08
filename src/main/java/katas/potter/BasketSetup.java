@@ -9,9 +9,8 @@ public class BasketSetup {
     private List<BookSet> bookSets;
 
     public BasketSetup() {
-        bookSets = new ArrayList<BookSet>();
+        bookSets = new ArrayList<>();
     }
-
 
     public static BasketSetup createBy(BookOrder bookOrder, int bookSetSize) {
         BasketSetup basketSetup = new BasketSetup();
@@ -25,7 +24,6 @@ public class BasketSetup {
         return basketSetup;
     }
 
-
     private int bookSetSize(int bookSetSize, BookOrder bookOrder) {
         if (bookOrder.booksSize() >= bookSetSize) {
             return bookSetSize;
@@ -38,17 +36,12 @@ public class BasketSetup {
         return bookOrder.booksSize() > 0;
     }
 
-
     public void add(BookSet bookSet) {
         bookSets.add(bookSet);
     }
 
     public List<BookSet> getBookSets() {
         return bookSets;
-    }
-
-    public int size() {
-        return bookSets.size();
     }
 
     public BigDecimal price() {
