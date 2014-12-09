@@ -19,14 +19,14 @@ public class BookOrderTest {
     public void calculate_price_one_book() {
         bookOrder.add(1, Book.BOOK1);
 
-        assertThat(calculatePriceOf(bookOrder), is(8f));
+        assertThat(bookOrder.price(), is(new BookPrice("8")));
     }
 
     @Test
     public void calculate_price_two_same_books() {
         bookOrder.add(2, Book.BOOK1);
 
-        assertThat(calculatePriceOf(bookOrder), is(16f));
+        assertThat(bookOrder.price(), is(new BookPrice("16")));
     }
 
     @Test
@@ -34,7 +34,7 @@ public class BookOrderTest {
         bookOrder.add(1, Book.BOOK1);
         bookOrder.add(1, Book.BOOK2);
 
-        assertThat(calculatePriceOf(bookOrder), is(15.2f));
+        assertThat(bookOrder.price(), is(new BookPrice("15.2")));
     }
 
     @Test
@@ -43,7 +43,7 @@ public class BookOrderTest {
         bookOrder.add(1, Book.BOOK2);
         bookOrder.add(1, Book.BOOK3);
 
-        assertThat(calculatePriceOf(bookOrder), is(21.6f));
+        assertThat(bookOrder.price(), is(new BookPrice("21.6")));
     }
 
     @Test
@@ -51,7 +51,7 @@ public class BookOrderTest {
         bookOrder.add(2, Book.BOOK1);
         bookOrder.add(1, Book.BOOK2);
 
-        assertThat(calculatePriceOf(bookOrder), is(23.2f));
+        assertThat(bookOrder.price(), is(new BookPrice("23.2")));
     }
 
     @Test
@@ -62,10 +62,7 @@ public class BookOrderTest {
         bookOrder.add(1, Book.BOOK4);
         bookOrder.add(1, Book.BOOK5);
 
-        assertThat(calculatePriceOf(bookOrder), is(51.20f));
+        assertThat(bookOrder.price(), is(new BookPrice("51.2")));
     }
 
-    private float calculatePriceOf(BookOrder order) {
-        return order.price();
-    }
 }

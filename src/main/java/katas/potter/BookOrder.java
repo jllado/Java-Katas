@@ -12,8 +12,8 @@ public class BookOrder {
         basket.add(book, size);
     }
 
-    public float price() {
-        return basket.getBestPrice().floatValue();
+    public BookPrice price() {
+        return basket.getBestPrice();
     }
 
 }

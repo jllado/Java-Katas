@@ -18,6 +18,10 @@ public class BookPrice {
         this.value = value;
     }
 
+    public BookPrice(String value) {
+        this.value = new BigDecimal(value);
+    }
+
     public void add(BookPrice price) {
         value = value.add(price.value);
     }
@@ -28,10 +32,6 @@ public class BookPrice {
 
     private boolean isZero() {
         return value.equals(BigDecimal.ZERO);
-    }
-
-    public float floatValue() {
-        return value.floatValue();
     }
 
     public static BookPrice getDefaultPrice() {
@@ -48,5 +48,27 @@ public class BookPrice {
 
     public void apply(BookDiscount discount) {
         multiplyBy(discount.value());
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        BookPrice bookPrice = (BookPrice) o;
+
+        if (value != null ? value.floatValue() != bookPrice.value.floatValue() : bookPrice.value != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return value != null ? value.hashCode() : 0;
+    }
+
+    @Override
+    public String toString() {
+        return value.toString();
     }
 }
