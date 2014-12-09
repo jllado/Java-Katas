@@ -1,6 +1,5 @@
 package katas.potter;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,30 +8,15 @@ public class BookSet {
     private List<Book> books;
 
     public BookSet() {
-        books = new ArrayList<Book>();
+        books = new ArrayList<>();
     }
 
-    public static BookSet createBy(BookOrder bookOrder, int bookSetSize) {
-        BookSet bookSet = new BookSet();
-        for (Book book : bookOrder.books()) {
-            if (bookSet.isSize(bookSetSize)) {
-                break;
-            }
-            bookSet.add(book);
-        }
-        return bookSet;
-    }
-
-    private boolean isSize(int bookSetSize) {
-        return books.size() == bookSetSize;
+    public boolean isSize(int size) {
+        return books.size() == size;
     }
 
     public void add(Book book) {
         books.add(book);
-    }
-
-    public int size() {
-        return books.size();
     }
 
     public List<Book> books() {
@@ -40,9 +24,9 @@ public class BookSet {
     }
 
     public BookPrice price() {
-        BookDiscount sizeDiscount = BookDiscounts.getBy(size());
+        BookDiscount sizeDiscount = BookDiscounts.getBy(books.size());
         BookPrice bookSetPrice = BookPrice.getDefaultPrice();
-        bookSetPrice.multiplyBy(size());
+        bookSetPrice.multiplyBy(books.size());
         bookSetPrice.apply(sizeDiscount);
         return bookSetPrice;
     }

@@ -65,28 +65,7 @@ public class BookOrderTest {
         assertThat(calculatePriceOf(bookOrder), is(51.20f));
     }
 
-    private float calculatePriceOf(BookOrder pedido) {
-        return pedido.price();
-    }
-
-    @Test
-    public void remove_books_by_bookSet() {
-        bookOrder.add(2, Book.BOOK1);
-
-        bookOrder.removeBooksBy(BookSet.createBy(bookOrder, 1));
-
-        assertThat(bookOrder.copiesSize(), is(1));
-        assertThat(bookOrder.size(), is(1));
-    }
-
-    @Test
-    public void remove_books_by_bookSet_with_bookOrder_size() {
-        bookOrder.add(1, Book.BOOK1);
-        bookOrder.add(1, Book.BOOK2);
-
-        bookOrder.removeBooksBy(BookSet.createBy(bookOrder, 2));
-
-        assertThat(bookOrder.copiesSize(), is(0));
-        assertThat(bookOrder.size(), is(0));
+    private float calculatePriceOf(BookOrder order) {
+        return order.price();
     }
 }

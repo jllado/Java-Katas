@@ -11,36 +11,8 @@ public class BookBasketSetup {
         bookSets = new ArrayList<>();
     }
 
-    public static BookBasketSetup createBy(BookOrder bookOrder, int bookSetSize) {
-        BookBasketSetup basketSetup = new BookBasketSetup();
-
-        BookOrder newBookOrder = new BookOrder(bookOrder);
-        while (basketSetup.isThereBooksIn(newBookOrder)) {
-            BookSet bookSet = BookSet.createBy(newBookOrder, basketSetup.bookSetSize(bookSetSize, newBookOrder));
-            basketSetup.add(bookSet);
-            newBookOrder.removeBooksBy(bookSet);
-        }
-        return basketSetup;
-    }
-
-    private int bookSetSize(int bookSetSize, BookOrder bookOrder) {
-        if (bookOrder.booksSize() >= bookSetSize) {
-            return bookSetSize;
-        } else {
-            return bookOrder.booksSize();
-        }
-    }
-
-    private boolean isThereBooksIn(BookOrder bookOrder) {
-        return bookOrder.booksSize() > 0;
-    }
-
     public void add(BookSet bookSet) {
         bookSets.add(bookSet);
-    }
-
-    public List<BookSet> getBookSets() {
-        return bookSets;
     }
 
     public BookPrice price() {
