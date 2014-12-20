@@ -35,8 +35,10 @@ public class BookPrice {
         return new BookPrice("8");
     }
 
-    public void multiplyBy(int value) {
-        this.value = this.value.multiply(new BigDecimal(value));
+    public BookPrice multiplyBy(int value) {
+        BookPrice bookPrice = new BookPrice();
+        bookPrice.value = this.value.multiply(new BigDecimal(value));
+        return bookPrice;
     }
 
     public void multiplyBy(BigDecimal value) {
