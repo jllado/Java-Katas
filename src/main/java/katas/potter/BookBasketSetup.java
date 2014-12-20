@@ -5,7 +5,7 @@ import java.util.List;
 
 public class BookBasketSetup {
 
-    private List<BookSet> bookSets;
+    private final List<BookSet> bookSets;
 
     public BookBasketSetup() {
         bookSets = new ArrayList<>();
@@ -18,7 +18,7 @@ public class BookBasketSetup {
     public BookPrice price() {
         BookPrice price = new BookPrice();
         for (BookSet bookSet : bookSets) {
-            price.add(bookSet.price());
+            price = price.add(bookSet.price());
         }
         return price;
     }

@@ -2,7 +2,7 @@ package katas.potter;
 
 public class BookOrder {
 
-    private BookBasket basket;
+    private final BookBasket basket;
 
     public BookOrder() {
         basket = new BookBasket();

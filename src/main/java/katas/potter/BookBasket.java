@@ -7,14 +7,14 @@ import java.util.Map;
  * Created by jllado on 8/12/14.
  */
 public class BookBasket {
-    private Map<Book, Integer> books;
+    private final Map<Book, Integer> books;
     private int copiesSize = 0;
 
     public BookBasket() {
         this.books = new LinkedHashMap<>();
     }
 
-    public BookBasket(BookBasket basket) {
+    private BookBasket(BookBasket basket) {
         this.books = new LinkedHashMap<>(basket.books);
         this.copiesSize = basket.copiesSize;
     }
@@ -81,7 +81,7 @@ public class BookBasket {
         BookPrice bestPrice = new BookPrice();
         for (int maxBookSetSize = 1; maxBookSetSize <= books.size(); maxBookSetSize++) {
             BookPrice priceSetup = getSetupBy(maxBookSetSize).price();
-            if (priceSetup.isBestThan(bestPrice)) {
+            if (priceSetup.isBetterThan(bestPrice)) {
                 bestPrice = priceSetup;
             }
         }

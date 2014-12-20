@@ -5,7 +5,7 @@ import java.util.List;
 
 public class BookSet {
 
-    private List<Book> books;
+    private final List<Book> books;
 
     public BookSet() {
         books = new ArrayList<>();
@@ -25,10 +25,7 @@ public class BookSet {
 
     public BookPrice price() {
         BookDiscount sizeDiscount = BookDiscounts.getBy(books.size());
-        BookPrice bookSetPrice = BookPrice.getDefaultPrice();
-        bookSetPrice.multiplyBy(books.size());
-        bookSetPrice.apply(sizeDiscount);
-        return bookSetPrice;
+        return BookPrice.getDefaultPrice().times(books.size()).apply(sizeDiscount);
     }
 
 }

@@ -5,7 +5,7 @@ package katas.potter;
  */
 public class BookDiscounts {
 
-    private static BookDiscount[] sizeDiscounts = {
+    private static final BookDiscount[] sizeDiscounts = {
             new BookDiscount("0"),
             new BookDiscount("1"),
             new BookDiscount("0.95"),

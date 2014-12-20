@@ -6,7 +6,6 @@ import java.math.BigDecimal;
  * Created by jllado on 8/12/14.
  */
 public class BookPrice {
-    public static final BigDecimal DEFAULT_PRICE_VALUE = new BigDecimal("8");
 
     private BigDecimal value;
 
@@ -14,20 +13,20 @@ public class BookPrice {
         value = new BigDecimal("0");
     }
 
-    public BookPrice(BigDecimal value) {
-        this.value = value;
-    }
-
     public BookPrice(String value) {
         this.value = new BigDecimal(value);
     }
 
-    public void add(BookPrice price) {
-        value = value.add(price.value);
+    public BookPrice add(BookPrice price) {
+        return getBookPriceBy(value.add(price.value));
     }
 
-    public boolean isBestThan(BookPrice price) {
-        return price.isZero() || value.compareTo(price.value) < 0;
+    public boolean isBetterThan(BookPrice price) {
+        return price.isZero() || isLowerThan(price);
+    }
+
+    private boolean isLowerThan(BookPrice price) {
+        return value.compareTo(price.value) < 0;
     }
 
     private boolean isZero() {
@@ -35,19 +34,21 @@ public class BookPrice {
     }
 
     public static BookPrice getDefaultPrice() {
-        return new BookPrice(DEFAULT_PRICE_VALUE);
+        return new BookPrice("8");
     }
 
-    public void multiplyBy(int value) {
-        this.value = this.value.multiply(new BigDecimal(value));
+    public BookPrice times(int value) {
+        return getBookPriceBy(this.value.multiply(new BigDecimal(value)));
     }
 
-    public void multiplyBy(BigDecimal value) {
-        this.value = this.value.multiply(value);
+    public BookPrice apply(BookDiscount discount) {
+        return getBookPriceBy(this.value.multiply(discount.value()));
     }
 
-    public void apply(BookDiscount discount) {
-        multiplyBy(discount.value());
+    private BookPrice getBookPriceBy(BigDecimal value) {
+        BookPrice bookPrice = new BookPrice();
+        bookPrice.value = value;
+        return bookPrice;
     }
 
     @Override
