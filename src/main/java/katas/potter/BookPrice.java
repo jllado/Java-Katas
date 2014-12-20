@@ -17,8 +17,10 @@ public class BookPrice {
         this.value = new BigDecimal(value);
     }
 
-    public void add(BookPrice price) {
-        value = value.add(price.value);
+    public BookPrice add(BookPrice price) {
+        BookPrice bookPrice = new BookPrice();
+        bookPrice.value = value.add(price.value);
+        return bookPrice;
     }
 
     public boolean isBestThan(BookPrice price) {

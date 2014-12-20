@@ -18,7 +18,7 @@ public class BookBasketSetup {
     public BookPrice price() {
         BookPrice price = new BookPrice();
         for (BookSet bookSet : bookSets) {
-            price.add(bookSet.price());
+            price = price.add(bookSet.price());
         }
         return price;
     }
