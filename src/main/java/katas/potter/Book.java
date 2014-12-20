@@ -1,17 +1,11 @@
 package katas.potter;
 
-public class Book {
+public enum Book {
+    BOOK1("Book 1"), BOOK2("Book 2"), BOOK3("Book 3"), BOOK4("Book 4"), BOOK5("Book 5");
+    
+    private final String tittle;
 
-    public static final Book BOOK1 = new Book("Book 1");
-    public static final Book BOOK2 = new Book("Book 2");
-    public static final Book BOOK3 = new Book("Book 3");
-    public static final Book BOOK4 = new Book("Book 4");
-    public static final Book BOOK5 = new Book("Book 5");
-
-    private final String title;
-
-    public Book(String title) {
-        this.title = title;
+    Book(String title) {
+        this.tittle = title;
     }
-
 }

@@ -25,7 +25,7 @@ public class BookSet {
 
     public BookPrice price() {
         BookDiscount sizeDiscount = BookDiscounts.getBy(books.size());
-        return  BookPrice.getDefaultPrice().times(books.size()).apply(sizeDiscount);
+        return BookPrice.getDefaultPrice().times(books.size()).apply(sizeDiscount);
     }
 
 }
