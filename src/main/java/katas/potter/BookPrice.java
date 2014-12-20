@@ -43,12 +43,12 @@ public class BookPrice {
         return bookPrice;
     }
 
-    public void multiplyBy(BigDecimal value) {
-        this.value = this.value.multiply(value);
+    public BookPrice multiplyBy(BigDecimal value) {
+        return getBookPriceBy(this.value.multiply(value));
     }
 
-    public void apply(BookDiscount discount) {
-        multiplyBy(discount.value());
+    public BookPrice apply(BookDiscount discount) {
+        return multiplyBy(discount.value());
     }
 
     @Override
