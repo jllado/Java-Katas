@@ -5,7 +5,7 @@ import java.util.List;
 
 public class BookSet {
 
-    private List<Book> books;
+    private final List<Book> books;
 
     public BookSet() {
         books = new ArrayList<>();
