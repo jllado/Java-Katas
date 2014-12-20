@@ -21,8 +21,12 @@ public class BookPrice {
         return getBookPriceBy(value.add(price.value));
     }
 
-    public boolean isBestThan(BookPrice price) {
-        return price.isZero() || value.compareTo(price.value) < 0;
+    public boolean isBetterThan(BookPrice price) {
+        return price.isZero() || isLowerThan(price);
+    }
+
+    private boolean isLowerThan(BookPrice price) {
+        return value.compareTo(price.value) < 0;
     }
 
     private boolean isZero() {

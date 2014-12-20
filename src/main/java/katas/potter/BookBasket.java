@@ -81,7 +81,7 @@ public class BookBasket {
         BookPrice bestPrice = new BookPrice();
         for (int maxBookSetSize = 1; maxBookSetSize <= books.size(); maxBookSetSize++) {
             BookPrice priceSetup = getSetupBy(maxBookSetSize).price();
-            if (priceSetup.isBestThan(bestPrice)) {
+            if (priceSetup.isBetterThan(bestPrice)) {
                 bestPrice = priceSetup;
             }
         }
