@@ -18,9 +18,7 @@ public class BookPrice {
     }
 
     public BookPrice add(BookPrice price) {
-        BookPrice bookPrice = new BookPrice();
-        bookPrice.value = value.add(price.value);
-        return bookPrice;
+        return getBookPriceBy(value.add(price.value));
     }
 
     public boolean isBestThan(BookPrice price) {
@@ -36,8 +34,12 @@ public class BookPrice {
     }
 
     public BookPrice multiplyBy(int value) {
+        return getBookPriceBy(this.value.multiply(new BigDecimal(value)));
+    }
+
+    private BookPrice getBookPriceBy(BigDecimal value) {
         BookPrice bookPrice = new BookPrice();
-        bookPrice.value = this.value.multiply(new BigDecimal(value));
+        bookPrice.value = value;
         return bookPrice;
     }
 
