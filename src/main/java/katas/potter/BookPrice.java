@@ -6,16 +6,11 @@ import java.math.BigDecimal;
  * Created by jllado on 8/12/14.
  */
 public class BookPrice {
-    public static final BigDecimal DEFAULT_PRICE_VALUE = new BigDecimal("8");
 
     private BigDecimal value;
 
     public BookPrice() {
         value = new BigDecimal("0");
-    }
-
-    public BookPrice(BigDecimal value) {
-        this.value = value;
     }
 
     public BookPrice(String value) {
@@ -35,7 +30,7 @@ public class BookPrice {
     }
 
     public static BookPrice getDefaultPrice() {
-        return new BookPrice(DEFAULT_PRICE_VALUE);
+        return new BookPrice("8");
     }
 
     public void multiplyBy(int value) {
