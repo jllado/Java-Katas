@@ -37,18 +37,14 @@ public class BookPrice {
         return getBookPriceBy(this.value.multiply(new BigDecimal(value)));
     }
 
+    public BookPrice apply(BookDiscount discount) {
+        return getBookPriceBy(this.value.multiply(discount.value()));
+    }
+
     private BookPrice getBookPriceBy(BigDecimal value) {
         BookPrice bookPrice = new BookPrice();
         bookPrice.value = value;
         return bookPrice;
-    }
-
-    public BookPrice multiplyBy(BigDecimal value) {
-        return getBookPriceBy(this.value.multiply(value));
-    }
-
-    public BookPrice apply(BookDiscount discount) {
-        return multiplyBy(discount.value());
     }
 
     @Override
