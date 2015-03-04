@@ -22,6 +22,9 @@ public class BowlingGameTest {
         if ("-".equals(roll)) {
             return 0;
         }
+        if ("X".equals(roll)) {
+            return 10;
+        }
         return Integer.valueOf(roll);
     }
 }
