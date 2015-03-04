@@ -15,6 +15,7 @@ public class BowlingGameTest {
         assertThat(scoreOf("1"), is(1));
         assertThat(scoreOf("2"), is(2));
         assertThat(scoreOf("-"), is(0));
+        assertThat(scoreOf("X"), is(10));
     }
 
     private int scoreOf(String roll) {
