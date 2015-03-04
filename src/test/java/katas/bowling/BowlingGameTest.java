@@ -18,6 +18,9 @@ public class BowlingGameTest {
     }
 
     private int scoreOf(String roll) {
+        if ("-".equals(roll)) {
+            return 0;
+        }
         return Integer.valueOf(roll);
     }
 }
