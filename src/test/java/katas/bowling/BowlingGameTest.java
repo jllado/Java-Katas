@@ -16,6 +16,6 @@ public class BowlingGameTest {
     }
 
     private int scoreOf(String roll) {
-        return 0;
+        return 1;
     }
 }
