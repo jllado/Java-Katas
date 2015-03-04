@@ -14,6 +14,7 @@ public class BowlingGameTest {
     public void get_score_given_one_roll() throws Exception {
         assertThat(scoreOf("1"), is(1));
         assertThat(scoreOf("2"), is(2));
+        assertThat(scoreOf("-"), is(0));
     }
 
     private int scoreOf(String roll) {
