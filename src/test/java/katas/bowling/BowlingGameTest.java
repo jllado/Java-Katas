@@ -18,6 +18,15 @@ public class BowlingGameTest {
         assertThat(scoreOf("X"), is(10));
     }
 
+    @Test
+    public void get_score_given_game_with_one_frame() throws Exception {
+        assertThat(scoreOf(new String[]{"1", "-"}), is(1));
+    }
+
+    private int scoreOf(String[] game) {
+        return 0;
+    }
+
     private int scoreOf(String roll) {
         if ("-".equals(roll)) {
             return 0;
