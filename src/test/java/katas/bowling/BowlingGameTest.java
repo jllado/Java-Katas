@@ -41,7 +41,11 @@ public class BowlingGameTest {
     private int scoreOf(String[] game) {
         int score = 0;
         for (int i = 0; i < game.length / 2; i++) {
-            score += frameScore(game, i * 2);
+            if ("/".equals(game[1])) {
+                score += 10 + scoreOf(game[2]);
+            } else {
+                score += frameScore(game, i * 2);
+            }
         }
         return score;
     }
