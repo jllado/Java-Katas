@@ -132,9 +132,7 @@ public class BowlingGameTest {
         List<String[]> frames = new ArrayList<>();
         int rolls = 0;
         while (rolls < game.length) {
-            boolean strike = isStrike(game, rolls);
-            boolean spare = isSpare(game, rolls);
-            if (strike || spare) {
+            if (isStrike(game, rolls) || isSpare(game, rolls)) {
                 frames.add(getStrikeOrSpareFrame(game, rolls));
                 rolls = getNextRoll(game, rolls);
                 continue;
