@@ -130,15 +130,15 @@ public class BowlingGameTest {
 
     private List<String[]> getFramesFrom(String[] game) {
         List<String[]> frames = new ArrayList<>();
-        int rolls = 0;
-        while (rolls < game.length) {
-            if (isStrike(game, rolls) || isSpare(game, rolls)) {
-                frames.add(getStrikeOrSpareFrame(game, rolls));
-                rolls = getNextRoll(game, rolls);
+        int roll = 0;
+        while (roll < game.length) {
+            if (isStrike(game, roll) || isSpare(game, roll)) {
+                frames.add(getStrikeOrSpareFrame(game, roll));
+                roll = getNextRoll(game, roll);
                 continue;
             }
-            frames.add(getFrame(game, rolls));
-            rolls += 2;
+            frames.add(getFrame(game, roll));
+            roll += 2;
         }
         return frames;
     }
