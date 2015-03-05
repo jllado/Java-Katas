@@ -109,7 +109,11 @@ public class BowlingGameTest {
             String firstTry = game[rolls];
             if ("X".equals(firstTry)) {
                 frames.add(new String[]{firstTry, game[rolls + 1], game[rolls + 2]});
-                rolls += 3;
+                if (rolls + 3 == game.length - 1) {
+                    rolls += 3;
+                } else {
+                    rolls += 1;
+                }
             } else {
                 frames.add(new String[]{firstTry, game[rolls + 1]});
                 rolls += 2;
