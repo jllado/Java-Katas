@@ -82,7 +82,12 @@ public class BowlingGameTest {
 
     private List<String[]> getFramesFrom(String[] game) {
         List<String[]> frames = new ArrayList<>();
-        frames.add(game);
+        if (game.length > 2) {
+            frames.add(new String[]{game[0], game[1]});
+            frames.add(new String[]{game[2], game[3]});
+        } else {
+            frames.add(game);
+        }
         return frames;
     }
 
