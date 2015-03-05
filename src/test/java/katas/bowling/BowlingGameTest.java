@@ -40,6 +40,7 @@ public class BowlingGameTest {
         assertThat(scoreOf(new String[]{"1", "2", "2", "/", "3"}), is(16));
         assertThat(scoreOf(new String[]{"1", "/", "2", "1", "3", "4"}), is(22));
         assertThat(scoreOf(new String[]{"1", "-", "2", "/", "3", "4"}), is(21));
+        assertThat(scoreOf(new String[]{"1", "-", "2", "/", "3"}), is(14));
     }
 
     @Test
