@@ -30,9 +30,13 @@ public class BowlingGameTest {
 
     private int scoreOf(String[] game) {
         if (game.length > 2) {
-            return scoreOf(game[0]) + scoreOf(game[1]) + scoreOf(game[2]) + scoreOf(game[3]);
+            return frameScore(game, 0) + frameScore(game, 2);
         }
-        return scoreOf(game[0]) + scoreOf(game[1]);
+        return frameScore(game, 0);
+    }
+
+    private int frameScore(String[] game, int i) {
+        return scoreOf(game[i]) + scoreOf(game[i + 1]);
     }
 
     private int scoreOf(String roll) {
