@@ -48,6 +48,8 @@ public class BowlingGameTest {
     public void get_score_given_game_with_one_strike_frame() throws Exception {
         assertThat(scoreOf(new String[]{"X", "1", "2"}), is(13));
         assertThat(scoreOf(new String[]{"X", "2", "2"}), is(14));
+        assertThat(scoreOf(new String[]{"1", "2", "X", "3", "4"}), is(20));
+        assertThat(scoreOf(new String[]{"1", "2", "3", "4", "X", "-", "5"}), is(25));
     }
 
     private int scoreOf(String[] game) {
