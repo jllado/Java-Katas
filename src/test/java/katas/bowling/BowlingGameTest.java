@@ -138,7 +138,7 @@ public class BowlingGameTest {
                 continue;
             }
             frames.add(getFrame(game, roll));
-            roll += 2;
+            roll += getNextRoll(game, roll);
         }
         return frames;
     }
@@ -147,7 +147,10 @@ public class BowlingGameTest {
         if (isLastFrame(game, rolls)) {
             return rolls + 3;
         }
-        return rolls + (isSpare(game, rolls) ? 2 : 1);
+        if (isStrike(game, rolls) || isSpare(game, rolls)) {
+            return rolls + (isSpare(game, rolls) ? 2 : 1);
+        }
+        return 2;
     }
 
     private boolean isSpare(String[] game, int rolls) {
