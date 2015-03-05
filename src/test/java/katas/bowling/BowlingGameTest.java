@@ -34,13 +34,11 @@ public class BowlingGameTest {
     }
 
     private int scoreOf(String[] game) {
-        if (game.length > 4) {
-            return frameScore(game, 0) + frameScore(game, 2) + frameScore(game, 4);
+        int score = 0;
+        for (int i = 0; i < game.length / 2; i++) {
+            score += frameScore(game, i * 2);
         }
-        if (game.length > 2) {
-            return frameScore(game, 0) + frameScore(game, 2);
-        }
-        return frameScore(game, 0);
+        return score;
     }
 
     private int frameScore(String[] game, int i) {
