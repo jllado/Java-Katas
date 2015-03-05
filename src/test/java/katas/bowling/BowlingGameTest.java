@@ -210,16 +210,8 @@ public class BowlingGameTest {
         return score;
     }
 
-    private boolean isStrike(int frameNumber, String[] game) {
-        return "X".equals(game[getNumberOfFirstRollFrom(frameNumber)]);
-    }
-
     private String getExtraRoll(int frameNumber, String[] game, int extraRoll) {
         return game[getNumberOfFirstRollFrom(frameNumber) + 1 + extraRoll];
-    }
-
-    private boolean isSpare(int frameNumber, String[] game) {
-        return "/".equals(game[getNumberOfFirstRollFrom(frameNumber) + 1]);
     }
 
     private int getNumberOfFirstRollFrom(int frameNumber) {
