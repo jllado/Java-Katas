@@ -36,10 +36,6 @@ public class BowlingGameTest {
     @Test
     public void get_score_given_game_with_one_spare_frame() throws Exception {
         assertThat(scoreOf(new String[]{"1", "/", "2"}), is(12));
-    }
-
-    @Test
-    public void get_score_given_game_with_one_spare_frame_and_another_frame() throws Exception {
         assertThat(scoreOf(new String[]{"1", "/", "2", "1"}), is(15));
         assertThat(scoreOf(new String[]{"1", "2", "2", "/", "3"}), is(16));
     }
