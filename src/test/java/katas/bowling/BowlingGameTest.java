@@ -128,7 +128,7 @@ public class BowlingGameTest {
     }
 
     private boolean isLastFrameAndStrike(String[] game, int rolls) {
-        return rolls + 3 == game.length - 1;
+        return rolls + 3 == game.length;
     }
 
     private String[] getFrame(String[] game, int rolls) {
