@@ -29,6 +29,9 @@ public class BowlingGameTest {
     }
 
     private int scoreOf(String[] game) {
+        if (game.length > 2) {
+            return scoreOf(game[0]) + scoreOf(game[1]) + scoreOf(game[2]) + scoreOf(game[3]);
+        }
         return scoreOf(game[0]) + scoreOf(game[1]);
     }
 
