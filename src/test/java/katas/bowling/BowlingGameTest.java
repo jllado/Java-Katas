@@ -145,11 +145,9 @@ public class BowlingGameTest {
 
     private int getNextRoll(String[] game, int rolls) {
         if (isLastFrame(game, rolls)) {
-            rolls += 3;
-        } else {
-            rolls += isSpare(game, rolls) ? 2 : 1;
+            return rolls + 3;
         }
-        return rolls;
+        return rolls + (isSpare(game, rolls) ? 2 : 1);
     }
 
     private boolean isSpare(String[] game, int rolls) {
