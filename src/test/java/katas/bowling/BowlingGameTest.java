@@ -54,6 +54,7 @@ public class BowlingGameTest {
     @Test
     public void get_score_given_game_with_two_spare_frame() throws Exception {
         assertThat(scoreOf(new String[]{"1", "/", "2", "/", "3"}), is(25));
+        assertThat(scoreOf(new String[]{"1", "/", "2", "/", "3", "-"}), is(28));
     }
 
     private int scoreOf(String[] game) {
