@@ -34,6 +34,9 @@ public class BowlingGameTest {
     }
 
     private int scoreOf(String[] game) {
+        if (game.length > 4) {
+            return frameScore(game, 0) + frameScore(game, 2) + frameScore(game, 4);
+        }
         if (game.length > 2) {
             return frameScore(game, 0) + frameScore(game, 2);
         }
