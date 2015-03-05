@@ -98,8 +98,14 @@ public class BowlingGameTest {
         List<String[]> frames = new ArrayList<>();
         int rolls = 0;
         while (rolls < game.length) {
-            frames.add(new String[]{game[rolls], game[rolls + 1]});
-            rolls += 2;
+            String firstTry = game[rolls];
+            if ("X".equals(firstTry)) {
+                frames.add(new String[]{firstTry, game[rolls + 1], game[rolls + 2]});
+                rolls += 3;
+            } else {
+                frames.add(new String[]{firstTry, game[rolls + 1]});
+                rolls += 2;
+            }
         }
         return frames;
     }
