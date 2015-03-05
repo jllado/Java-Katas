@@ -132,26 +132,24 @@ public class BowlingGameTest {
         List<String[]> frames = new ArrayList<>();
         int rolls = 0;
         while (rolls < game.length) {
-            String firstTry = game[rolls];
-            if ("X".equals(firstTry)) {
+            if ("X".equals(game[rolls])) {
                 frames.add(getStrikeOrSpareFrame(game, rolls));
                 if (isLastFrame(game, rolls)) {
-                    rolls += 3;
-                } else {
-                    rolls += 1;
+                    rolls += 2;
                 }
             } else if ("/".equals(game[rolls + 1])) {
                 frames.add(getStrikeOrSpareFrame(game, rolls));
                 if (isLastFrame(game, rolls)) {
-                    rolls += 3;
-                } else {
                     rolls += 2;
+                } else {
+                    rolls += 1;
                 }
 
             } else {
                 frames.add(getFrame(game, rolls));
-                rolls += 2;
+                rolls += 1;
             }
+            rolls += 1;
         }
         return frames;
     }
