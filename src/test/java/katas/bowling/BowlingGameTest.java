@@ -75,7 +75,7 @@ public class BowlingGameTest {
 
     private List<String[]> getFramesFrom(String[] game) {
         List<String[]> frames = new ArrayList<>();
-        frames.add(null);
+        frames.add(new String[]{"1", "/"});
         return frames;
     }
 
