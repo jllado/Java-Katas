@@ -52,13 +52,19 @@ public class BowlingGameTest {
     private int scoreOf(String[] game) {
         int score = 0;
         for (int frameNumber = 0; frameNumber < game.length / 2; frameNumber++) {
-            if (isSpare(frameNumber, game)) {
+            if (isStrike(frameNumber, game)) {
+                score += 13;
+            } else if (isSpare(frameNumber, game)) {
                 score += 10 + scoreOf(getExtraSpareRoll(frameNumber, game));
             } else {
                 score += frameScore(game, frameNumber);
             }
         }
         return score;
+    }
+
+    private boolean isStrike(int frameNumber, String[] game) {
+        return "X".equals(game[getNumberOfFirstRollFrom(frameNumber)]);
     }
 
     private String getExtraSpareRoll(int frameNumber, String[] game) {
