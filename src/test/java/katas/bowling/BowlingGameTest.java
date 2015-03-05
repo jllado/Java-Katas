@@ -133,6 +133,9 @@ public class BowlingGameTest {
                 } else {
                     rolls += 1;
                 }
+            } else if ("/".equals(game[rolls + 1])) {
+                frames.add(new String[]{game[rolls], game[rolls + 1], game[rolls + 2]});
+                rolls += 3;
             } else {
                 frames.add(getFrame(game, rolls));
                 rolls += 2;
