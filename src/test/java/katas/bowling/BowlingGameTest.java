@@ -136,17 +136,22 @@ public class BowlingGameTest {
             boolean spare = isSpare(game, rolls);
             if (strike || spare) {
                 frames.add(getStrikeOrSpareFrame(game, rolls));
-                if (isLastFrame(game, rolls)) {
-                    rolls += 3;
-                } else {
-                    rolls += spare ? 2 : 1;
-                }
+                rolls = getNextRoll(game, rolls);
                 continue;
             }
             frames.add(getFrame(game, rolls));
             rolls += 2;
         }
         return frames;
+    }
+
+    private int getNextRoll(String[] game, int rolls) {
+        if (isLastFrame(game, rolls)) {
+            rolls += 3;
+        } else {
+            rolls += isSpare(game, rolls) ? 2 : 1;
+        }
+        return rolls;
     }
 
     private boolean isSpare(String[] game, int rolls) {
