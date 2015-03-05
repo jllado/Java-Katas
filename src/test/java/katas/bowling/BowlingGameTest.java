@@ -127,14 +127,14 @@ public class BowlingGameTest {
         while (rolls < game.length) {
             String firstTry = game[rolls];
             if ("X".equals(firstTry)) {
-                frames.add(getStrikeFrame(game, rolls));
+                frames.add(getStrikeOrSpareFrame(game, rolls));
                 if (isLastFrameAndStrike(game, rolls)) {
                     rolls += 3;
                 } else {
                     rolls += 1;
                 }
             } else if ("/".equals(game[rolls + 1])) {
-                frames.add(getStrikeFrame(game, rolls));
+                frames.add(getStrikeOrSpareFrame(game, rolls));
                 rolls += 3;
             } else {
                 frames.add(getFrame(game, rolls));
@@ -152,7 +152,7 @@ public class BowlingGameTest {
         return new String[]{game[rolls], game[rolls + 1]};
     }
 
-    private String[] getStrikeFrame(String[] game, int rolls) {
+    private String[] getStrikeOrSpareFrame(String[] game, int rolls) {
         return new String[]{game[rolls], game[rolls + 1], game[rolls + 2]};
     }
 
