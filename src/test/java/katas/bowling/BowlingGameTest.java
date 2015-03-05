@@ -2,6 +2,11 @@ package katas.bowling;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -60,6 +65,18 @@ public class BowlingGameTest {
     @Test
     public void get_score_given_game_with_one_spare_frame_and_one_strike_frame() throws Exception {
         assertThat(scoreOf(new String[]{"1", "/", "2", "3", "X", "1", "2"}), is(30));
+    }
+
+    @Test
+    public void get_frames_given_one_game_with_one_frame() throws Exception {
+        assertThat(getFramesFrom(new String[]{"1", "/"}).get(0), is(new String[]{"1", "/"}));
+
+    }
+
+    private List<String[]> getFramesFrom(String[] game) {
+        List<String[]> frames = new ArrayList<>();
+        frames.add(null);
+        return frames;
     }
 
     private int scoreOf(String[] game) {
