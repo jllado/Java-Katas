@@ -198,13 +198,13 @@ public class BowlingGameTest {
 
     private int scoreOf(String[] game) {
         int score = 0;
-        for (int frameNumber = 0; frameNumber < game.length / 2; frameNumber++) {
-            if (isStrike(frameNumber, game)) {
-                score += 10 + scoreOf(getExtraRoll(frameNumber, game, 0)) + scoreOf(getExtraRoll(frameNumber, game, 1));
-            } else if (isSpare(frameNumber, game)) {
-                score += 10 + scoreOf(getExtraRoll(frameNumber, game, 1));
+        for (String[] frame : getFramesFrom(game)) {
+            if (isStrike(frame, 0)) {
+                score += 10 + scoreOf(getExtraRoll(0, frame, 0)) + scoreOf(getExtraRoll(0, frame, 1));
+            } else if (isSpare(frame, 0)) {
+                score += 10 + scoreOf(getExtraRoll(0, frame, 1));
             } else {
-                score += frameScore(game, frameNumber);
+                score += frameScore(frame, 0);
             }
         }
         return score;
