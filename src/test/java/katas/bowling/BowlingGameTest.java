@@ -135,14 +135,14 @@ public class BowlingGameTest {
             String firstTry = game[rolls];
             if ("X".equals(firstTry)) {
                 frames.add(getStrikeOrSpareFrame(game, rolls));
-                if (isLastFrameAndStrike(game, rolls)) {
+                if (isLastFrame(game, rolls)) {
                     rolls += 3;
                 } else {
                     rolls += 1;
                 }
             } else if ("/".equals(game[rolls + 1])) {
                 frames.add(getStrikeOrSpareFrame(game, rolls));
-                if (isLastFrameAndStrike(game, rolls)) {
+                if (isLastFrame(game, rolls)) {
                     rolls += 3;
                 } else {
                     rolls += 2;
@@ -156,7 +156,7 @@ public class BowlingGameTest {
         return frames;
     }
 
-    private boolean isLastFrameAndStrike(String[] game, int rolls) {
+    private boolean isLastFrame(String[] game, int rolls) {
         return rolls + 3 == game.length;
     }
 
