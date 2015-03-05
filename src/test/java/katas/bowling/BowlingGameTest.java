@@ -68,7 +68,7 @@ public class BowlingGameTest {
     }
 
     @Test
-    public void get_frames_given_one_game_with_one_frame() throws Exception {
+    public void get_frames_given_game_with_one_frame() throws Exception {
         assertThat(getFramesFrom(new String[]{"1", "/"}).get(0), is(new String[]{"1", "/"}));
         assertThat(getFramesFrom(new String[]{"1", "2"}).get(0), is(new String[]{"1", "2"}));
     }
