@@ -24,7 +24,7 @@ public class BowlingGameTest {
     }
 
     private int scoreOf(String[] game) {
-        return 0;
+        return scoreOf(game[0]) + scoreOf(game[1]);
     }
 
     private int scoreOf(String roll) {
