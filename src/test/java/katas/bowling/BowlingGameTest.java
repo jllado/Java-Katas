@@ -201,11 +201,14 @@ public class BowlingGameTest {
         for (String[] frame : getFramesFrom(game)) {
             if (isStrike(frame)) {
                 score += 10 + scoreOf(getExtraRoll(frame, 0)) + scoreOf(getExtraRoll(frame, 1));
-            } else if (isSpare(frame)) {
-                score += 10 + scoreOf(getExtraRoll(frame, 1));
-            } else {
-                score += frameScore(frame, 0);
+                continue;
             }
+            if (isSpare(frame)) {
+                score += 10 + scoreOf(getExtraRoll(frame, 1));
+                continue;
+            }
+            score += frameScore(frame, 0);
+
         }
         return score;
     }
