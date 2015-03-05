@@ -46,14 +46,26 @@ public class BowlingGameTest {
 
     private int scoreOf(String[] game) {
         int score = 0;
-        for (int i = 0; i < game.length / 2; i++) {
-            if ("/".equals(game[i * 2 + 1])) {
-                score += 10 + scoreOf(game[i * 2 + 2]);
+        for (int frameNumber = 0; frameNumber < game.length / 2; frameNumber++) {
+            if (isSpare(frameNumber, game)) {
+                score += 10 + scoreOf(getExtraSpareRoll(frameNumber, game));
             } else {
-                score += frameScore(game, i * 2);
+                score += frameScore(game, getNumberOfFirstRollFrom(frameNumber));
             }
         }
         return score;
+    }
+
+    private String getExtraSpareRoll(int frameNumber, String[] game) {
+        return game[getNumberOfFirstRollFrom(frameNumber) + 2];
+    }
+
+    private boolean isSpare(int frameNumber, String[] game) {
+        return "/".equals(game[getNumberOfFirstRollFrom(frameNumber) + 1]);
+    }
+
+    private int getNumberOfFirstRollFrom(int frameNumber) {
+        return frameNumber * 2;
     }
 
     private int frameScore(String[] game, int i) {
