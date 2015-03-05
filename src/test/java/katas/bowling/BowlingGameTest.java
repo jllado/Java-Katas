@@ -132,12 +132,12 @@ public class BowlingGameTest {
         List<String[]> frames = new ArrayList<>();
         int rolls = 0;
         while (rolls < game.length) {
-            if ("X".equals(game[rolls])) {
+            if (isStrike(game, rolls)) {
                 frames.add(getStrikeOrSpareFrame(game, rolls));
                 if (isLastFrame(game, rolls)) {
                     rolls += 2;
                 }
-            } else if ("/".equals(game[rolls + 1])) {
+            } else if (isSpare(game, rolls)) {
                 frames.add(getStrikeOrSpareFrame(game, rolls));
                 if (isLastFrame(game, rolls)) {
                     rolls += 2;
@@ -152,6 +152,14 @@ public class BowlingGameTest {
             rolls += 1;
         }
         return frames;
+    }
+
+    private boolean isSpare(String[] game, int rolls) {
+        return "/".equals(game[rolls + 1]);
+    }
+
+    private boolean isStrike(String[] game, int rolls) {
+        return "X".equals(game[rolls]);
     }
 
     private boolean isLastFrame(String[] game, int rolls) {
