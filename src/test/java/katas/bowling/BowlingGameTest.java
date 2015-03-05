@@ -3,8 +3,6 @@ package katas.bowling;
 import org.junit.Test;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -108,18 +106,30 @@ public class BowlingGameTest {
         while (rolls < game.length) {
             String firstTry = game[rolls];
             if ("X".equals(firstTry)) {
-                frames.add(new String[]{firstTry, game[rolls + 1], game[rolls + 2]});
-                if (rolls + 3 == game.length - 1) {
+                frames.add(getStrikeFrame(game, rolls));
+                if (isLastFrameAndStrike(game, rolls)) {
                     rolls += 3;
                 } else {
                     rolls += 1;
                 }
             } else {
-                frames.add(new String[]{firstTry, game[rolls + 1]});
+                frames.add(getFrame(game, rolls));
                 rolls += 2;
             }
         }
         return frames;
+    }
+
+    private boolean isLastFrameAndStrike(String[] game, int rolls) {
+        return rolls + 3 == game.length - 1;
+    }
+
+    private String[] getFrame(String[] game, int rolls) {
+        return new String[]{game[rolls], game[rolls + 1]};
+    }
+
+    private String[] getStrikeFrame(String[] game, int rolls) {
+        return new String[]{game[rolls], game[rolls + 1], game[rolls + 2]};
     }
 
     private int scoreOf(String[] game) {
