@@ -94,6 +94,14 @@ public class BowlingGameTest {
         assertThat(getFramesFrom(game).get(0), is(new String[]{"X", "1", "2"}));
     }
 
+    @Test
+    public void get_frames_given_game_with_one_strike_and_another_two_frames() throws Exception {
+        String[] game = {"X", "1", "2", "3", "4"};
+        assertThat(getFramesFrom(game).get(0), is(new String[]{"X", "1", "2"}));
+        assertThat(getFramesFrom(game).get(1), is(new String[]{"1", "2"}));
+        assertThat(getFramesFrom(game).get(2), is(new String[]{"3", "4"}));
+    }
+
     private List<String[]> getFramesFrom(String[] game) {
         List<String[]> frames = new ArrayList<>();
         int rolls = 0;
