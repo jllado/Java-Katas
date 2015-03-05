@@ -90,15 +90,10 @@ public class BowlingGameTest {
 
     private List<String[]> getFramesFrom(String[] game) {
         List<String[]> frames = new ArrayList<>();
-        if (game.length > 4) {
-            frames.add(new String[]{game[0], game[1]});
-            frames.add(new String[]{game[2], game[3]});
-            frames.add(new String[]{game[4], game[5]});
-        } else if (game.length > 2) {
-            frames.add(new String[]{game[0], game[1]});
-            frames.add(new String[]{game[2], game[3]});
-        } else {
-            frames.add(game);
+        int rolls = 0;
+        while (rolls < game.length) {
+            frames.add(new String[]{game[rolls], game[rolls + 1]});
+            rolls += 2;
         }
         return frames;
     }
