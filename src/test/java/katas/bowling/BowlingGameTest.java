@@ -23,6 +23,11 @@ public class BowlingGameTest {
         assertThat(scoreOf(new String[]{"1", "-"}), is(1));
     }
 
+    @Test
+    public void get_score_given_game_with_two_frames() throws Exception {
+        assertThat(scoreOf(new String[]{"1", "-", "2", "3"}), is(6));
+    }
+
     private int scoreOf(String[] game) {
         return scoreOf(game[0]) + scoreOf(game[1]);
     }
