@@ -142,7 +142,12 @@ public class BowlingGameTest {
                 }
             } else if ("/".equals(game[rolls + 1])) {
                 frames.add(getStrikeOrSpareFrame(game, rolls));
-                rolls += 3;
+                if (isLastFrameAndStrike(game, rolls)) {
+                    rolls += 3;
+                } else {
+                    rolls += 2;
+                }
+
             } else {
                 frames.add(getFrame(game, rolls));
                 rolls += 2;
