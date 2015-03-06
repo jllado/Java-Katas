@@ -30,10 +30,10 @@ public class Frame {
 
     public int score() {
         if (isStrike()) {
-            return strikeScore();
+            return 10 + getExtraRoll(tries, 0).score() + getExtraRoll(tries, 1).score();
         }
         if (isSpare()) {
-            return  spareScore();
+            return 10 + getExtraRoll(tries, 1).score();
         }
 
         return tries[(0)].score() + tries[1].score();
