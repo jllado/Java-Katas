@@ -19,21 +19,21 @@ public class Game {
         while (roll < rolls.length) {
             if (isStrike(rolls, roll) || isSpare(rolls, roll)) {
                 frames.add(getStrikeOrSpareFrame(rolls, roll));
-                roll = getNextRoll(rolls, roll);
+                roll = getNextRoll(roll);
                 continue;
             }
             frames.add(getFrame(rolls, roll));
-            roll += getNextRoll(rolls, roll);
+            roll += getNextRoll(roll);
         }
         return frames;
     }
 
-    int getNextRoll(String[] game, int rolls) {
-        if (isLastFrame(game, rolls)) {
-            return rolls + 3;
+    int getNextRoll(int roll) {
+        if (isLastFrame(rolls, roll)) {
+            return roll + 3;
         }
-        if (isStrike(game, rolls) || isSpare(game, rolls)) {
-            return rolls + (isSpare(game, rolls) ? 2 : 1);
+        if (isStrike(rolls, roll) || isSpare(rolls, roll)) {
+            return roll + (isSpare(rolls, roll) ? 2 : 1);
         }
         return 2;
     }
