@@ -51,17 +51,25 @@ public class Game {
         int score = 0;
         for (String[] frame : getFrames()) {
             if (isStrike(frame)) {
-                score += 10 + scoreOf(getExtraRoll(frame, 0)) + scoreOf(getExtraRoll(frame, 1));
+                score += strikeScoreOf(frame);
                 continue;
             }
             if (isSpare(frame)) {
-                score += 10 + scoreOf(getExtraRoll(frame, 1));
+                score += spareScoreOf(frame);
                 continue;
             }
             score += scoreOf(frame[(0)]) + scoreOf(frame[1]);
 
         }
         return score;
+    }
+
+    private int spareScoreOf(String[] frame) {
+        return 10 + scoreOf(getExtraRoll(frame, 1));
+    }
+
+    private int strikeScoreOf(String[] frame) {
+        return 10 + scoreOf(getExtraRoll(frame, 0)) + scoreOf(getExtraRoll(frame, 1));
     }
 
     private String getExtraRoll(String[] frame, int extraRoll) {
