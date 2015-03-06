@@ -14,7 +14,7 @@ public class Game {
     }
 
     private List<String[]> getFramesFrom() {
-        List<String[]> frames = new ArrayList<String[]>();
+        List<String[]> frames = new ArrayList<>();
         int roll = 0;
         while (roll < rolls.length) {
             if (isStrike(rolls, roll) || isSpare(rolls, roll)) {
@@ -28,7 +28,7 @@ public class Game {
         return frames;
     }
 
-    int getNextRoll(int roll) {
+    private int getNextRoll(int roll) {
         if (isLastFrame(roll)) {
             return roll + 3;
         }
@@ -38,7 +38,7 @@ public class Game {
         return 2;
     }
 
-    boolean isLastFrame(int roll) {
+    private boolean isLastFrame(int roll) {
         return roll + 3 == rolls.length;
     }
 
@@ -67,15 +67,15 @@ public class Game {
         return score;
     }
 
-    boolean isSpare(String[] frame) {
+    private boolean isSpare(String[] frame) {
         return isSpare(frame, 0);
     }
 
-    boolean isStrike(String[] frame) {
+    private boolean isStrike(String[] frame) {
         return isStrike(frame, 0);
     }
 
-    String getExtraRoll(String[] frame, int extraRoll) {
+    private String getExtraRoll(String[] frame, int extraRoll) {
         return frame[1 + extraRoll];
     }
 
@@ -89,11 +89,11 @@ public class Game {
         return Integer.valueOf(roll);
     }
 
-    boolean isSpare(String[] game, int rolls) {
+    private boolean isSpare(String[] game, int rolls) {
         return "/".equals(game[rolls + 1]);
     }
 
-    boolean isStrike(String[] game, int rolls) {
+    private boolean isStrike(String[] game, int rolls) {
         return "X".equals(game[rolls]);
     }
 }
