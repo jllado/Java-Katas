@@ -13,7 +13,7 @@ public class Game {
         this.rolls = strings;
     }
 
-    public List<String[]> getFramesFrom() {
+    private List<String[]> getFramesFrom() {
         List<String[]> frames = new ArrayList<String[]>();
         int roll = 0;
         while (roll < rolls.length) {
@@ -42,15 +42,15 @@ public class Game {
         return roll + 3 == rolls.length;
     }
 
-    String[] getFrame(int roll) {
+    private String[] getFrame(int roll) {
         return new String[]{rolls[roll], rolls[roll + 1]};
     }
 
-    String[] getStrikeOrSpareFrame(int roll) {
+    private String[] getStrikeOrSpareFrame(int roll) {
         return new String[]{rolls[roll], rolls[roll + 1], rolls[roll + 2]};
     }
 
-    int scoreOf(String[] game) {
+    public int scoreOf(String[] game) {
         int score = 0;
         for (String[] frame : getFramesFrom()) {
             if (isStrike(frame)) {
