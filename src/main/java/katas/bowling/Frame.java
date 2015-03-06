@@ -16,11 +16,11 @@ public class Frame {
         return tries[0].isStrike();
     }
 
-    private int spareScoreOf() {
+    private int spareScore() {
         return 10 + getExtraRoll(tries, 1).score();
     }
 
-    private int strikeScoreOf() {
+    private int strikeScore() {
         return 10 + getExtraRoll(tries, 0).score() + getExtraRoll(tries, 1).score();
     }
 
@@ -30,10 +30,10 @@ public class Frame {
 
     public int score() {
         if (isStrike()) {
-            return strikeScoreOf();
+            return strikeScore();
         }
         if (isSpare()) {
-            return  spareScoreOf();
+            return  spareScore();
         }
 
         return tries[(0)].score() + tries[1].score();
