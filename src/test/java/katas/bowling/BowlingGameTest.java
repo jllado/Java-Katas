@@ -68,6 +68,11 @@ public class BowlingGameTest {
     }
 
     @Test
+    public void get_score_given_ten_strikes() throws Exception {
+        assertThat(scoreOf(new String[]{"X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X"}), is(300));
+    }
+
+    @Test
     public void get_frames_given_game_with_one_frame() throws Exception {
         assertThat(getFramesFrom(new String[]{"1", "3"}).get(0), is(new String[]{"1", "3"}));
         assertThat(getFramesFrom(new String[]{"1", "2"}).get(0), is(new String[]{"1", "2"}));
