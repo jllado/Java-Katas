@@ -14,23 +14,23 @@ public class Game {
         List<Frame> frames = new ArrayList<>();
         int roll = 0;
         while (roll < rolls.length) {
-            if (isStrike(roll) || isSpare(roll)) {
+            if (isStrike(rolls[roll]) || isSpare(roll)) {
                 frames.add(strikeOrSpareFrame(roll));
-                roll = getNextRoll(roll);
+                roll = getNextRoll(roll, rolls[roll]);
                 continue;
             }
             frames.add(frame(roll));
-            roll += getNextRoll(roll);
+            roll += getNextRoll(roll, rolls[roll]);
         }
         return frames;
     }
 
-    private int getNextRoll(int roll) {
-        if (isLastFrame(roll)) {
-            return roll + 3;
+    private int getNextRoll(int rollNumber, String roll) {
+        if (isLastFrame(rollNumber)) {
+            return rollNumber + 3;
         }
-        if (isStrike(roll) || isSpare(roll)) {
-            return roll + (isSpare(roll) ? 2 : 1);
+        if (isStrike(roll) || isSpare(rollNumber)) {
+            return rollNumber + (isSpare(rollNumber) ? 2 : 1);
         }
         return 2;
     }
@@ -60,8 +60,8 @@ public class Game {
     }
 
 
-    private boolean isStrike(int roll) {
-        return Frame.isStrike(rolls[roll]);
+    private boolean isStrike(String roll) {
+        return Frame.isStrike(roll);
     }
 
 }
