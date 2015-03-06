@@ -26,6 +26,21 @@ public class Game {
         return frames;
     }
 
+    private List<Frame> frames() {
+        List<Frame> frames = new ArrayList<>();
+        int roll = 0;
+        while (roll < rolls.length) {
+            if (isStrike(roll) || isSpare(roll)) {
+                frames.add(strikeOrSpareFrame(roll));
+                roll = getNextRoll(roll);
+                continue;
+            }
+            frames.add(frame(roll));
+            roll += getNextRoll(roll);
+        }
+        return frames;
+    }
+
     private int getNextRoll(int roll) {
         if (isLastFrame(roll)) {
             return roll + 3;
@@ -44,8 +59,16 @@ public class Game {
         return new String[]{rolls[roll], rolls[roll + 1]};
     }
 
+    private Frame frame(int roll) {
+        return new Frame(new String[]{rolls[roll], rolls[roll + 1]});
+    }
+
     private String[] getStrikeOrSpareFrame(int roll) {
         return new String[]{rolls[roll], rolls[roll + 1], rolls[roll + 2]};
+    }
+
+    private Frame strikeOrSpareFrame(int roll) {
+        return new Frame(new String[]{rolls[roll], rolls[roll + 1], rolls[roll + 2]});
     }
 
     public int score() {

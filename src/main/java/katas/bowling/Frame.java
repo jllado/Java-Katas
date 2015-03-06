@@ -1,7 +1,14 @@
 package katas.bowling;
 
 public class Frame {
+
+    private String[] tries;
+
     public Frame() {
+    }
+
+    public Frame(String[] rolls) {
+        this.tries = rolls;
     }
 
     int scoreOf(String roll) {
