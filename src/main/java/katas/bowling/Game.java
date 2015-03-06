@@ -78,15 +78,8 @@ public class Game {
         return Integer.valueOf(roll);
     }
 
-    private boolean isSpare(String[] frame, int rolls) {
-        return "/".equals(frame[rolls + 1]);
-    }
     private boolean isSpare(int roll) {
         return "/".equals(rolls[roll + 1]);
-    }
-
-    private boolean isStrike(String[] frame, int rolls) {
-        return "X".equals(frame[rolls]);
     }
 
     private boolean isStrike(int roll) {
@@ -94,10 +87,10 @@ public class Game {
     }
 
     private boolean isSpare(String[] frame) {
-        return isSpare(frame, 0);
+        return "/".equals(frame[0 + 1]);
     }
 
     private boolean isStrike(String[] frame) {
-        return isStrike(frame, 0);
+        return "X".equals(frame[0]);
     }
 }
