@@ -10,21 +10,6 @@ public class Game {
         this.rolls = strings;
     }
 
-    private List<String[]> getFrames() {
-        List<String[]> frames = new ArrayList<>();
-        int roll = 0;
-        while (roll < rolls.length) {
-            if (isStrike(roll) || isSpare(roll)) {
-                frames.add(getStrikeOrSpareFrame(roll));
-                roll = getNextRoll(roll);
-                continue;
-            }
-            frames.add(getFrame(roll));
-            roll += getNextRoll(roll);
-        }
-        return frames;
-    }
-
     private List<Frame> frames() {
         List<Frame> frames = new ArrayList<>();
         int roll = 0;
@@ -54,16 +39,8 @@ public class Game {
         return roll + 3 == rolls.length;
     }
 
-    private String[] getFrame(int roll) {
-        return new String[]{rolls[roll], rolls[roll + 1]};
-    }
-
     private Frame frame(int roll) {
         return new Frame(new String[]{rolls[roll], rolls[roll + 1]});
-    }
-
-    private String[] getStrikeOrSpareFrame(int roll) {
-        return new String[]{rolls[roll], rolls[roll + 1], rolls[roll + 2]};
     }
 
     private Frame strikeOrSpareFrame(int roll) {
