@@ -14,7 +14,7 @@ public class Game {
         List<String[]> frames = new ArrayList<>();
         int roll = 0;
         while (roll < rolls.length) {
-            if (isStrike(rolls, roll) || isSpare(rolls, roll)) {
+            if (isStrike(rolls, roll) || isSpare(roll)) {
                 frames.add(getStrikeOrSpareFrame(roll));
                 roll = getNextRoll(roll);
                 continue;
@@ -88,6 +88,9 @@ public class Game {
 
     private boolean isSpare(String[] game, int rolls) {
         return "/".equals(game[rolls + 1]);
+    }
+    private boolean isSpare(int roll) {
+        return isSpare(rolls, roll);
     }
 
     private boolean isStrike(String[] game, int rolls) {
