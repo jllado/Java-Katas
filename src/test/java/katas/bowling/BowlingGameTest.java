@@ -73,6 +73,12 @@ public class BowlingGameTest {
     }
 
     @Test
+    public void get_score_given_twenty_rolls() throws Exception {
+        String game = "9-9-9-9-9-9-9-9-9-9-";
+        assertThat(scoreOf(toArray(game)), is(90));
+    }
+
+    @Test
     public void get_frames_given_game_with_one_frame() throws Exception {
         assertThat(getFramesFrom(new String[]{"1", "3"}).get(0), is(new String[]{"1", "3"}));
         assertThat(getFramesFrom(new String[]{"1", "2"}).get(0), is(new String[]{"1", "2"}));
@@ -240,5 +246,13 @@ public class BowlingGameTest {
             return 10;
         }
         return Integer.valueOf(roll);
+    }
+
+    private String[] toArray(String game) {
+        String[] array = new String[game.length()];
+        for (int i = 0; i < game.toCharArray().length; i++) {
+            array[i] = String.valueOf(game.charAt(i));
+        }
+        return array;
     }
 }
