@@ -207,7 +207,7 @@ public class BowlingGameTest {
                 score += 10 + scoreOf(getExtraRoll(frame, 1));
                 continue;
             }
-            score += frameScore(frame, 0);
+            score += scoreOf(frame[(0)]) + scoreOf(frame[1]);
 
         }
         return score;
@@ -223,11 +223,6 @@ public class BowlingGameTest {
 
     private String getExtraRoll(String[] game, int extraRoll) {
         return game[1 + extraRoll];
-    }
-
-    private int frameScore(String[] game, int frameNumber) {
-        int numberOfFirstRoll = frameNumber * 2;
-        return scoreOf(game[numberOfFirstRoll]) + scoreOf(game[numberOfFirstRoll + 1]);
     }
 
     private int scoreOf(String roll) {
