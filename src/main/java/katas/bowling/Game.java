@@ -50,16 +50,7 @@ public class Game {
     public int score() {
         int score = 0;
         for (Frame frame : frames()) {
-            if (frame.isStrike()) {
-                score += frame.strikeScoreOf();
-                continue;
-            }
-            if (frame.isSpare()) {
-                score += frame.spareScoreOf();
-                continue;
-            }
             score += frame.score();
-
         }
         return score;
     }

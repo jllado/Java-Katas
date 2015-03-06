@@ -47,6 +47,13 @@ public class Frame {
     }
 
     public int score() {
+        if (isStrike()) {
+            return strikeScoreOf();
+        }
+        if (isSpare()) {
+            return  spareScoreOf();
+        }
+
         return scoreOf(tries[(0)]) + scoreOf(tries[1]);
     }
 }
