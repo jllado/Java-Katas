@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
-    private final Roll roll = new Roll();
     private String[] rolls;
 
     public Game(String[] strings) {
@@ -15,9 +14,9 @@ public class Game {
         List<Frame> frames = new ArrayList<>();
         int roll = 0;
         while (roll < rolls.length) {
-            String firstRoll = rolls[roll];
-            String secondRoll = rolls[roll + 1];
-            if (this.roll.isStrike(firstRoll) || this.roll.isSpare(secondRoll)) {
+            Roll firstRoll = new Roll(rolls[roll]);
+            Roll secondRoll = new Roll(rolls[roll + 1]);
+            if (firstRoll.isStrike() || secondRoll.isSpare()) {
                 frames.add(strikeOrSpareFrame(roll));
                 roll = getNextRoll(roll, firstRoll, secondRoll);
                 continue;
@@ -28,12 +27,12 @@ public class Game {
         return frames;
     }
 
-    private int getNextRoll(int rollNumber, String firstRoll, String secondRoll) {
+    private int getNextRoll(int rollNumber, Roll firstRoll, Roll secondRoll) {
         if (isLastFrame(rollNumber)) {
             return rollNumber + 3;
         }
-        if (roll.isStrike(firstRoll) || roll.isSpare(secondRoll)) {
-            return rollNumber + (roll.isSpare(secondRoll) ? 2 : 1);
+        if (firstRoll.isStrike() || secondRoll.isSpare()) {
+            return rollNumber + (secondRoll.isSpare() ? 2 : 1);
         }
         return 2;
     }
@@ -56,15 +55,6 @@ public class Game {
             score += frame.score();
         }
         return score;
-    }
-
-    private boolean isSpare(String roll) {
-        return this.roll.isSpare(roll);
-    }
-
-
-    private boolean isStrike(String roll) {
-        return this.roll.isStrike(roll);
     }
 
 }

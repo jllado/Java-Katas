@@ -1,14 +1,21 @@
 package katas.bowling;
 
 public class Roll {
-    public Roll() {
+
+    private static final String SPARE = "/";
+    private static final String STRIKE = "X";
+    private String value;
+
+    public Roll(String value) {
+        this.value = value;
     }
 
-    boolean isSpare(String roll) {
-        return Frame.isSpare(roll);
+    public boolean isSpare() {
+        return SPARE.equals(value);
     }
 
-    boolean isStrike(String roll) {
-        return Frame.isStrike(roll);
+    public boolean isStrike() {
+        return STRIKE.equals(value);
     }
+
 }
