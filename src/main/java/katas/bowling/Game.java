@@ -13,7 +13,7 @@ public class Game {
         this.rolls = strings;
     }
 
-    List<String[]> getFramesFrom() {
+    public List<String[]> getFramesFrom() {
         List<String[]> frames = new ArrayList<String[]>();
         int roll = 0;
         while (roll < rolls.length) {
@@ -29,7 +29,7 @@ public class Game {
     }
 
     int getNextRoll(int roll) {
-        if (isLastFrame(rolls, roll)) {
+        if (isLastFrame(roll)) {
             return roll + 3;
         }
         if (isStrike(rolls, roll) || isSpare(rolls, roll)) {
@@ -38,16 +38,8 @@ public class Game {
         return 2;
     }
 
-    boolean isSpare(String[] game, int rolls) {
-        return "/".equals(game[rolls + 1]);
-    }
-
-    boolean isStrike(String[] game, int rolls) {
-        return "X".equals(game[rolls]);
-    }
-
-    boolean isLastFrame(String[] game, int rolls) {
-        return rolls + 3 == game.length;
+    boolean isLastFrame(int roll) {
+        return roll + 3 == rolls.length;
     }
 
     String[] getFrame(String[] game, int rolls) {
@@ -95,5 +87,13 @@ public class Game {
             return 10;
         }
         return Integer.valueOf(roll);
+    }
+
+    boolean isSpare(String[] game, int rolls) {
+        return "/".equals(game[rolls + 1]);
+    }
+
+    boolean isStrike(String[] game, int rolls) {
+        return "X".equals(game[rolls]);
     }
 }
