@@ -30,7 +30,7 @@ public class Game {
             return roll + 3;
         }
         if (isStrike(roll) || isSpare(roll)) {
-            return roll + (isSpare(rolls, roll) ? 2 : 1);
+            return roll + (isSpare(roll) ? 2 : 1);
         }
         return 2;
     }
@@ -85,8 +85,8 @@ public class Game {
         return isSpare(rolls, roll);
     }
 
-    private boolean isStrike(String[] game, int rolls) {
-        return "X".equals(game[rolls]);
+    private boolean isStrike(String[] frame, int rolls) {
+        return "X".equals(frame[rolls]);
     }
 
     private boolean isStrike(int roll) {
