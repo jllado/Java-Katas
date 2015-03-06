@@ -29,7 +29,7 @@ public class Game {
         if (isLastFrame(roll)) {
             return roll + 3;
         }
-        if (isStrike(rolls, roll) || isSpare(rolls, roll)) {
+        if (isStrike(roll) || isSpare(roll)) {
             return roll + (isSpare(rolls, roll) ? 2 : 1);
         }
         return 2;
@@ -64,14 +64,6 @@ public class Game {
         return score;
     }
 
-    private boolean isSpare(String[] frame) {
-        return isSpare(frame, 0);
-    }
-
-    private boolean isStrike(String[] frame) {
-        return isStrike(frame, 0);
-    }
-
     private String getExtraRoll(String[] frame, int extraRoll) {
         return frame[1 + extraRoll];
     }
@@ -99,5 +91,13 @@ public class Game {
 
     private boolean isStrike(int roll) {
         return "X".equals(rolls[roll]);
+    }
+
+    private boolean isSpare(String[] frame) {
+        return isSpare(frame, 0);
+    }
+
+    private boolean isStrike(String[] frame) {
+        return isStrike(frame, 0);
     }
 }
