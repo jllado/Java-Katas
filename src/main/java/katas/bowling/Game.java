@@ -14,27 +14,22 @@ public class Game {
         List<Frame> frames = new ArrayList<>();
         int roll = 0;
         while (roll < rolls.length) {
-            Roll firstRoll = new Roll(rolls[roll]);
-            Roll secondRoll = new Roll(rolls[roll + 1]);
-            if (firstRoll.isStrike() || secondRoll.isSpare()) {
-                frames.add(strikeOrSpareFrame(roll));
-                roll = getNextRoll(roll, firstRoll, secondRoll);
-                continue;
-            }
             frames.add(frame(roll));
-            roll += getNextRoll(roll, firstRoll, secondRoll);
+            roll = getNextRoll(roll);
         }
         return frames;
     }
 
-    private int getNextRoll(int rollNumber, Roll firstRoll, Roll secondRoll) {
-        if (isLastFrame(rollNumber)) {
-            return rollNumber + 3;
+    private int getNextRoll(int roll) {
+        Roll firstRoll = new Roll(rolls[roll]);
+        Roll secondRoll = new Roll(rolls[roll + 1]);
+        if (isLastFrame(roll)) {
+            return roll + 3;
         }
         if (firstRoll.isStrike() || secondRoll.isSpare()) {
-            return rollNumber + (secondRoll.isSpare() ? 2 : 1);
+            return roll + (secondRoll.isSpare() ? 2 : 1);
         }
-        return 2;
+        return roll + 2;
     }
 
     private boolean isLastFrame(int roll) {
@@ -42,11 +37,12 @@ public class Game {
     }
 
     private Frame frame(int roll) {
-        return new Frame(new Roll[]{new Roll(rolls[roll]), new Roll(rolls[roll + 1])});
-    }
-
-    private Frame strikeOrSpareFrame(int roll) {
-        return new Frame(new Roll[]{new Roll(rolls[roll]), new Roll(rolls[roll + 1]), new Roll(rolls[roll + 2])});
+        Roll firstRoll = new Roll(rolls[roll]);
+        Roll secondRoll = new Roll(rolls[roll + 1]);
+        if (firstRoll.isStrike() || secondRoll.isSpare()) {
+            return new Frame(new Roll[]{firstRoll, secondRoll, new Roll(rolls[roll + 2])});
+        }
+        return new Frame(new Roll[]{firstRoll, secondRoll});
     }
 
     public int score() {
