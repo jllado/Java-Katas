@@ -4,20 +4,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
+    private String[] rolls;
+
     public Game() {
     }
 
-    List<String[]> getFramesFrom(String[] game) {
+    public Game(String[] strings) {
+        this.rolls = strings;
+    }
+
+    List<String[]> getFramesFrom() {
         List<String[]> frames = new ArrayList<String[]>();
         int roll = 0;
-        while (roll < game.length) {
-            if (isStrike(game, roll) || isSpare(game, roll)) {
-                frames.add(getStrikeOrSpareFrame(game, roll));
-                roll = getNextRoll(game, roll);
+        while (roll < rolls.length) {
+            if (isStrike(rolls, roll) || isSpare(rolls, roll)) {
+                frames.add(getStrikeOrSpareFrame(rolls, roll));
+                roll = getNextRoll(rolls, roll);
                 continue;
             }
-            frames.add(getFrame(game, roll));
-            roll += getNextRoll(game, roll);
+            frames.add(getFrame(rolls, roll));
+            roll += getNextRoll(rolls, roll);
         }
         return frames;
     }
@@ -54,7 +60,7 @@ public class Game {
 
     int scoreOf(String[] game) {
         int score = 0;
-        for (String[] frame : getFramesFrom(game)) {
+        for (String[] frame : getFramesFrom()) {
             if (isStrike(frame)) {
                 score += 10 + scoreOf(getExtraRoll(frame, 0)) + scoreOf(getExtraRoll(frame, 1));
                 continue;
