@@ -26,19 +26,19 @@ public class Frame {
         return "/".equals(roll);
     }
 
-    public boolean isSpare() {
+    private boolean isSpare() {
         return isSpare(tries[1]);
     }
 
-    public boolean isStrike() {
+    private boolean isStrike() {
         return isStrike(tries[0]);
     }
 
-    public int spareScoreOf() {
+    private int spareScoreOf() {
         return 10 + scoreOf(getExtraRoll(tries, 1));
     }
 
-    public int strikeScoreOf() {
+    private int strikeScoreOf() {
         return 10 + scoreOf(getExtraRoll(tries, 0)) + scoreOf(getExtraRoll(tries, 1));
     }
 
