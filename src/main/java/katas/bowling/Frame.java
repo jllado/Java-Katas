@@ -21,31 +21,35 @@ public class Frame {
         return Integer.valueOf(roll);
     }
 
-    boolean isStrike(String roll) {
+    public static boolean isStrike(String roll) {
         return "X".equals(roll);
     }
 
-    boolean isSpare(String roll) {
+    public static boolean isSpare(String roll) {
         return "/".equals(roll);
     }
 
-    boolean isSpare(String[] frame) {
-        return isSpare(frame[1]);
+    boolean isSpare() {
+        return isSpare(tries[1]);
     }
 
-    boolean isStrike(String[] frame) {
-        return isStrike(frame[0]);
+    boolean isStrike() {
+        return isStrike(tries[0]);
     }
 
-    int spareScoreOf(String[] frame) {
-        return 10 + scoreOf(getExtraRoll(frame, 1));
+    int spareScoreOf() {
+        return 10 + scoreOf(getExtraRoll(tries, 1));
     }
 
-    int strikeScoreOf(String[] frame) {
-        return 10 + scoreOf(getExtraRoll(frame, 0)) + scoreOf(getExtraRoll(frame, 1));
+    int strikeScoreOf() {
+        return 10 + scoreOf(getExtraRoll(tries, 0)) + scoreOf(getExtraRoll(tries, 1));
     }
 
     String getExtraRoll(String[] frame, int extraRoll) {
         return frame[1 + extraRoll];
+    }
+
+    public int score() {
+        return scoreOf(tries[(0)]) + scoreOf(tries[1]);
     }
 }

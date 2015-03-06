@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
-    private final Frame frame = new Frame();
     private String[] rolls;
 
     public Game(String[] strings) {
@@ -73,28 +72,28 @@ public class Game {
 
     public int score() {
         int score = 0;
-        for (String[] frame : getFrames()) {
-            if (this.frame.isStrike(frame)) {
-                score += this.frame.strikeScoreOf(frame);
+        for (Frame frame : frames()) {
+            if (frame.isStrike()) {
+                score += frame.strikeScoreOf();
                 continue;
             }
-            if (this.frame.isSpare(frame)) {
-                score += this.frame.spareScoreOf(frame);
+            if (frame.isSpare()) {
+                score += frame.spareScoreOf();
                 continue;
             }
-            score += this.frame.scoreOf(frame[(0)]) + this.frame.scoreOf(frame[1]);
+            score += frame.score();
 
         }
         return score;
     }
 
     private boolean isSpare(int roll) {
-        return this.frame.isSpare(rolls[roll + 1]);
+        return Frame.isSpare(rolls[roll + 1]);
     }
 
 
     private boolean isStrike(int roll) {
-        return this.frame.isStrike(rolls[roll]);
+        return Frame.isStrike(rolls[roll]);
     }
 
 }
