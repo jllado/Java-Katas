@@ -10,11 +10,11 @@ public class Game {
         this.rolls = strings;
     }
 
-    private List<String[]> getFramesFrom() {
+    private List<String[]> getFrames() {
         List<String[]> frames = new ArrayList<>();
         int roll = 0;
         while (roll < rolls.length) {
-            if (isStrike(rolls, roll) || isSpare(roll)) {
+            if (isStrike(roll) || isSpare(roll)) {
                 frames.add(getStrikeOrSpareFrame(roll));
                 roll = getNextRoll(roll);
                 continue;
@@ -49,7 +49,7 @@ public class Game {
 
     public int score() {
         int score = 0;
-        for (String[] frame : getFramesFrom()) {
+        for (String[] frame : getFrames()) {
             if (isStrike(frame)) {
                 score += 10 + scoreOf(getExtraRoll(frame, 0)) + scoreOf(getExtraRoll(frame, 1));
                 continue;
@@ -95,5 +95,9 @@ public class Game {
 
     private boolean isStrike(String[] game, int rolls) {
         return "X".equals(game[rolls]);
+    }
+
+    private boolean isStrike(int roll) {
+        return "X".equals(rolls[roll]);
     }
 }
