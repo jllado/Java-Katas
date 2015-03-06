@@ -8,14 +8,6 @@ public class Frame {
         this.tries = rolls;
     }
 
-    public static boolean isStrike(String roll) {
-        return "X".equals(roll);
-    }
-
-    public static boolean isSpare(String roll) {
-        return "/".equals(roll);
-    }
-
     private boolean isSpare() {
         return tries[1].isSpare();
     }

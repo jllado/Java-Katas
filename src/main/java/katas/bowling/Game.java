@@ -40,7 +40,8 @@ public class Game {
         Roll firstRoll = new Roll(rolls[roll]);
         Roll secondRoll = new Roll(rolls[roll + 1]);
         if (firstRoll.isStrike() || secondRoll.isSpare()) {
-            return new Frame(new Roll[]{firstRoll, secondRoll, new Roll(rolls[roll + 2])});
+            Roll thirdRoll = new Roll(rolls[roll + 2]);
+            return new Frame(new Roll[]{firstRoll, secondRoll, thirdRoll});
         }
         return new Frame(new Roll[]{firstRoll, secondRoll});
     }
