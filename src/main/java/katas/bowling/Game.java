@@ -6,9 +6,6 @@ import java.util.List;
 public class Game {
     private String[] rolls;
 
-    public Game() {
-    }
-
     public Game(String[] strings) {
         this.rolls = strings;
     }
