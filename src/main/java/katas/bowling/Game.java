@@ -79,7 +79,11 @@ public class Game {
     }
 
     private boolean isSpare(int roll) {
-        return "/".equals(rolls[roll + 1]);
+        return isSpare(rolls[roll + 1]);
+    }
+
+    private boolean isSpare(String roll) {
+        return "/".equals(roll);
     }
 
     private boolean isStrike(int roll) {
