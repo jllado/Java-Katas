@@ -4,14 +4,11 @@ public class Frame {
 
     private String[] tries;
 
-    public Frame() {
-    }
-
     public Frame(String[] rolls) {
         this.tries = rolls;
     }
 
-    int scoreOf(String roll) {
+    private int scoreOf(String roll) {
         if ("-".equals(roll)) {
             return 0;
         }
@@ -29,23 +26,23 @@ public class Frame {
         return "/".equals(roll);
     }
 
-    boolean isSpare() {
+    public boolean isSpare() {
         return isSpare(tries[1]);
     }
 
-    boolean isStrike() {
+    public boolean isStrike() {
         return isStrike(tries[0]);
     }
 
-    int spareScoreOf() {
+    public int spareScoreOf() {
         return 10 + scoreOf(getExtraRoll(tries, 1));
     }
 
-    int strikeScoreOf() {
+    public int strikeScoreOf() {
         return 10 + scoreOf(getExtraRoll(tries, 0)) + scoreOf(getExtraRoll(tries, 1));
     }
 
-    String getExtraRoll(String[] frame, int extraRoll) {
+    private String getExtraRoll(String[] frame, int extraRoll) {
         return frame[1 + extraRoll];
     }
 
