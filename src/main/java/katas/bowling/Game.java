@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
+    private final Roll roll = new Roll();
     private String[] rolls;
 
     public Game(String[] strings) {
@@ -16,7 +17,7 @@ public class Game {
         while (roll < rolls.length) {
             String firstRoll = rolls[roll];
             String secondRoll = rolls[roll + 1];
-            if (isStrike(firstRoll) || isSpare(secondRoll)) {
+            if (this.roll.isStrike(firstRoll) || this.roll.isSpare(secondRoll)) {
                 frames.add(strikeOrSpareFrame(roll));
                 roll = getNextRoll(roll, firstRoll, secondRoll);
                 continue;
@@ -31,8 +32,8 @@ public class Game {
         if (isLastFrame(rollNumber)) {
             return rollNumber + 3;
         }
-        if (isStrike(firstRoll) || isSpare(secondRoll)) {
-            return rollNumber + (isSpare(secondRoll) ? 2 : 1);
+        if (roll.isStrike(firstRoll) || roll.isSpare(secondRoll)) {
+            return rollNumber + (roll.isSpare(secondRoll) ? 2 : 1);
         }
         return 2;
     }
@@ -58,12 +59,12 @@ public class Game {
     }
 
     private boolean isSpare(String roll) {
-        return Frame.isSpare(roll);
+        return this.roll.isSpare(roll);
     }
 
 
     private boolean isStrike(String roll) {
-        return Frame.isStrike(roll);
+        return this.roll.isStrike(roll);
     }
 
 }
