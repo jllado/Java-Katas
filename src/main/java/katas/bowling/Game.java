@@ -42,11 +42,11 @@ public class Game {
     }
 
     private Frame frame(int roll) {
-        return new Frame(new String[]{rolls[roll], rolls[roll + 1]});
+        return new Frame(new Roll[]{new Roll(rolls[roll]), new Roll(rolls[roll + 1])});
     }
 
     private Frame strikeOrSpareFrame(int roll) {
-        return new Frame(new String[]{rolls[roll], rolls[roll + 1], rolls[roll + 2]});
+        return new Frame(new Roll[]{new Roll(rolls[roll]), new Roll(rolls[roll + 1]), new Roll(rolls[roll + 2])});
     }
 
     public int score() {

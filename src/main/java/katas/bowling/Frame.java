@@ -2,20 +2,10 @@ package katas.bowling;
 
 public class Frame {
 
-    private String[] tries;
+    private Roll[] tries;
 
-    public Frame(String[] rolls) {
+    public Frame(Roll[] rolls) {
         this.tries = rolls;
-    }
-
-    private int scoreOf(String roll) {
-        if ("-".equals(roll)) {
-            return 0;
-        }
-        if ("X".equals(roll)) {
-            return 10;
-        }
-        return Integer.valueOf(roll);
     }
 
     public static boolean isStrike(String roll) {
@@ -27,22 +17,22 @@ public class Frame {
     }
 
     private boolean isSpare() {
-        return isSpare(tries[1]);
+        return tries[1].isSpare();
     }
 
     private boolean isStrike() {
-        return isStrike(tries[0]);
+        return tries[0].isStrike();
     }
 
     private int spareScoreOf() {
-        return 10 + scoreOf(getExtraRoll(tries, 1));
+        return 10 + getExtraRoll(tries, 1).score();
     }
 
     private int strikeScoreOf() {
-        return 10 + scoreOf(getExtraRoll(tries, 0)) + scoreOf(getExtraRoll(tries, 1));
+        return 10 + getExtraRoll(tries, 0).score() + getExtraRoll(tries, 1).score();
     }
 
-    private String getExtraRoll(String[] frame, int extraRoll) {
+    private Roll getExtraRoll(Roll[] frame, int extraRoll) {
         return frame[1 + extraRoll];
     }
 
@@ -54,6 +44,6 @@ public class Frame {
             return  spareScoreOf();
         }
 
-        return scoreOf(tries[(0)]) + scoreOf(tries[1]);
+        return tries[(0)].score() + tries[1].score();
     }
 }

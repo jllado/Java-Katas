@@ -18,4 +18,15 @@ public class Roll {
         return STRIKE.equals(value);
     }
 
+
+    public int score() {
+        if ("-".equals(value)) {
+            return 0;
+        }
+        if ("X".equals(value)) {
+            return 10;
+        }
+        return Integer.valueOf(value);
+    }
+
 }
