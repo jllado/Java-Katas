@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
+    private final Frame frame = new Frame();
     private String[] rolls;
 
     public Game(String[] strings) {
@@ -50,63 +51,27 @@ public class Game {
     public int score() {
         int score = 0;
         for (String[] frame : getFrames()) {
-            if (isStrike(frame)) {
-                score += strikeScoreOf(frame);
+            if (this.frame.isStrike(frame)) {
+                score += this.frame.strikeScoreOf(frame);
                 continue;
             }
-            if (isSpare(frame)) {
-                score += spareScoreOf(frame);
+            if (this.frame.isSpare(frame)) {
+                score += this.frame.spareScoreOf(frame);
                 continue;
             }
-            score += scoreOf(frame[(0)]) + scoreOf(frame[1]);
+            score += this.frame.scoreOf(frame[(0)]) + this.frame.scoreOf(frame[1]);
 
         }
         return score;
     }
 
-    private int spareScoreOf(String[] frame) {
-        return 10 + scoreOf(getExtraRoll(frame, 1));
-    }
-
-    private int strikeScoreOf(String[] frame) {
-        return 10 + scoreOf(getExtraRoll(frame, 0)) + scoreOf(getExtraRoll(frame, 1));
-    }
-
-    private String getExtraRoll(String[] frame, int extraRoll) {
-        return frame[1 + extraRoll];
-    }
-
-    private int scoreOf(String roll) {
-        if ("-".equals(roll)) {
-            return 0;
-        }
-        if ("X".equals(roll)) {
-            return 10;
-        }
-        return Integer.valueOf(roll);
-    }
-
     private boolean isSpare(int roll) {
-        return isSpare(rolls[roll + 1]);
+        return this.frame.isSpare(rolls[roll + 1]);
     }
 
-    private boolean isSpare(String roll) {
-        return "/".equals(roll);
-    }
-
-    private boolean isSpare(String[] frame) {
-        return isSpare(frame[1]);
-    }
 
     private boolean isStrike(int roll) {
-        return isStrike(rolls[roll]);
+        return this.frame.isStrike(rolls[roll]);
     }
 
-    private boolean isStrike(String roll) {
-        return "X".equals(roll);
-    }
-
-    private boolean isStrike(String[] frame) {
-        return isStrike(frame[0]);
-    }
 }
