@@ -4,6 +4,7 @@ public class Roll {
 
     private static final String SPARE = "/";
     private static final String STRIKE = "X";
+    private static final String ZERO = "-";
     private String value;
 
     public Roll(String value) {
@@ -20,13 +21,17 @@ public class Roll {
 
 
     public int score() {
-        if ("-".equals(value)) {
+        if (isZero()) {
             return 0;
         }
-        if ("X".equals(value)) {
+        if (isStrike()) {
             return 10;
         }
         return Integer.valueOf(value);
+    }
+
+    private boolean isZero() {
+        return ZERO.equals(value);
     }
 
 }
