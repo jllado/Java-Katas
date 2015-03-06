@@ -50,7 +50,7 @@ public class Game {
         return new String[]{rolls[roll], rolls[roll + 1], rolls[roll + 2]};
     }
 
-    public int scoreOf(String[] game) {
+    public int score() {
         int score = 0;
         for (String[] frame : getFramesFrom()) {
             if (isStrike(frame)) {
