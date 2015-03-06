@@ -18,7 +18,7 @@ public class Game {
         int roll = 0;
         while (roll < rolls.length) {
             if (isStrike(rolls, roll) || isSpare(rolls, roll)) {
-                frames.add(getStrikeOrSpareFrame(rolls, roll));
+                frames.add(getStrikeOrSpareFrame(roll));
                 roll = getNextRoll(roll);
                 continue;
             }
@@ -46,8 +46,8 @@ public class Game {
         return new String[]{rolls[roll], rolls[roll + 1]};
     }
 
-    String[] getStrikeOrSpareFrame(String[] game, int rolls) {
-        return new String[]{game[rolls], game[rolls + 1], game[rolls + 2]};
+    String[] getStrikeOrSpareFrame(int roll) {
+        return new String[]{rolls[roll], rolls[roll + 1], rolls[roll + 2]};
     }
 
     int scoreOf(String[] game) {
