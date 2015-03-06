@@ -22,7 +22,7 @@ public class Game {
                 roll = getNextRoll(roll);
                 continue;
             }
-            frames.add(getFrame(rolls, roll));
+            frames.add(getFrame(roll));
             roll += getNextRoll(roll);
         }
         return frames;
@@ -42,8 +42,8 @@ public class Game {
         return roll + 3 == rolls.length;
     }
 
-    String[] getFrame(String[] game, int rolls) {
-        return new String[]{game[rolls], game[rolls + 1]};
+    String[] getFrame(int roll) {
+        return new String[]{rolls[roll], rolls[roll + 1]};
     }
 
     String[] getStrikeOrSpareFrame(String[] game, int rolls) {
