@@ -12,14 +12,6 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public class BowlingGameTest {
 
     @Test
-    public void get_score_given_one_roll() throws Exception {
-        assertThat(new Game().scoreOf("1"), is(1));
-        assertThat(new Game().scoreOf("2"), is(2));
-        assertThat(new Game().scoreOf("-"), is(0));
-        assertThat(new Game().scoreOf("X"), is(10));
-    }
-
-    @Test
     public void get_score_given_game_with_one_frame() throws Exception {
         assertThat(new Game(new String[]{"1", "-"}).score(), is(1));
     }

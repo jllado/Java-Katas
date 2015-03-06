@@ -79,7 +79,7 @@ public class Game {
         return frame[1 + extraRoll];
     }
 
-    int scoreOf(String roll) {
+    private int scoreOf(String roll) {
         if ("-".equals(roll)) {
             return 0;
         }
