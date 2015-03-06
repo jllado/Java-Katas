@@ -12,18 +12,18 @@ public class Frame {
         return rolls[1].isSpare();
     }
 
-    private boolean isStrike() {
-        return rolls[0].isStrike();
-    }
-
     public int score() {
-        if (isStrike()) {
-            return 10 + rolls[1].score() + rolls[2].score();
-        }
         if (isSpare()) {
             return 10 + rolls[2].score();
         }
+        return totalScore();
+    }
 
-        return rolls[(0)].score() + rolls[1].score();
+    private int totalScore() {
+        int score = 0;
+        for (Roll roll : rolls) {
+            score += roll.score();
+        }
+        return score;
     }
 }
