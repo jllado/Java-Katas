@@ -14,23 +14,25 @@ public class Game {
         List<Frame> frames = new ArrayList<>();
         int roll = 0;
         while (roll < rolls.length) {
-            if (isStrike(rolls[roll]) || isSpare(roll)) {
+            String firstRoll = rolls[roll];
+            String secondRoll = rolls[roll + 1];
+            if (isStrike(firstRoll) || isSpare(secondRoll)) {
                 frames.add(strikeOrSpareFrame(roll));
-                roll = getNextRoll(roll, rolls[roll]);
+                roll = getNextRoll(roll, firstRoll, secondRoll);
                 continue;
             }
             frames.add(frame(roll));
-            roll += getNextRoll(roll, rolls[roll]);
+            roll += getNextRoll(roll, firstRoll, secondRoll);
         }
         return frames;
     }
 
-    private int getNextRoll(int rollNumber, String roll) {
+    private int getNextRoll(int rollNumber, String firstRoll, String secondRoll) {
         if (isLastFrame(rollNumber)) {
             return rollNumber + 3;
         }
-        if (isStrike(roll) || isSpare(rollNumber)) {
-            return rollNumber + (isSpare(rollNumber) ? 2 : 1);
+        if (isStrike(firstRoll) || isSpare(secondRoll)) {
+            return rollNumber + (isSpare(secondRoll) ? 2 : 1);
         }
         return 2;
     }
@@ -55,8 +57,8 @@ public class Game {
         return score;
     }
 
-    private boolean isSpare(int roll) {
-        return Frame.isSpare(rolls[roll + 1]);
+    private boolean isSpare(String roll) {
+        return Frame.isSpare(roll);
     }
 
 
