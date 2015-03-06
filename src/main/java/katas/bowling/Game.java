@@ -75,8 +75,8 @@ public class Game {
         return isStrike(frame, 0);
     }
 
-    String getExtraRoll(String[] game, int extraRoll) {
-        return game[1 + extraRoll];
+    String getExtraRoll(String[] frame, int extraRoll) {
+        return frame[1 + extraRoll];
     }
 
     int scoreOf(String roll) {
