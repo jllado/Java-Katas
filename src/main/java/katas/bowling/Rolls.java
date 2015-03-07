@@ -37,9 +37,6 @@ public class Rolls {
         if (firstRoll(index).isStrike()) {
             return index + STRIKE_FRAME_LENGTH;
         }
-        if (secondRoll(index).isSpare()) {
-            return index + FRAME_LENGTH;
-        }
         return index + FRAME_LENGTH;
     }
 
