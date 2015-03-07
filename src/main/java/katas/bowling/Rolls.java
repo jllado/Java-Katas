@@ -31,13 +31,11 @@ public class Rolls {
     }
 
     private int nextRoll(int index) {
-        Roll firstRoll = rolls.get(index);
-        Roll secondRoll = rolls.get(index + 1);
         if (isLastFrame(index)) {
             return index + LAST_FRAME_MAX_LENGTH;
         }
-        if (firstRoll.isStrike() || secondRoll.isSpare()) {
-            return index + (secondRoll.isSpare() ? FRAME_LENGTH : STRIKE_FRAME_LENGTH);
+        if (rolls.get(index).isStrike() || rolls.get(index + 1).isSpare()) {
+            return index + (rolls.get(index + 1).isSpare() ? FRAME_LENGTH : STRIKE_FRAME_LENGTH);
         }
         return index + FRAME_LENGTH;
     }
@@ -47,17 +45,13 @@ public class Rolls {
     }
 
     private Frame frame(int index) {
-        Roll firstRoll = rolls.get(index);
-        Roll secondRoll = rolls.get(index + 1);
-        if (firstRoll.isStrike()) {
-            Roll thirdRoll = rolls.get(index + 2);
-            return new StrikeFrame(new Roll[]{firstRoll, secondRoll, thirdRoll});
+        if (rolls.get(index).isStrike()) {
+            return new StrikeFrame(new Roll[]{rolls.get(index), rolls.get(index + 1), rolls.get(index + 2)});
         }
-        if (secondRoll.isSpare()) {
-            Roll thirdRoll = rolls.get(index + 2);
-            return new SpareFrame(new Roll[]{firstRoll, secondRoll, thirdRoll});
+        if (rolls.get(index + 1).isSpare()) {
+            return new SpareFrame(new Roll[]{rolls.get(index), rolls.get(index + 1), rolls.get(index + 2)});
         }
-        return new DefaultFrame(new Roll[]{firstRoll, secondRoll});
+        return new DefaultFrame(new Roll[]{rolls.get(index), rolls.get(index + 1)});
     }
 
 
