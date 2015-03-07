@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
-    private static final int FRAME_LENGHT = 2;
-    private static final int LAST_FRAME_MAX_LENGHT = 3;
-    private static final int STRIKE_FRAME_LENGHT = 1;
+    private static final int FRAME_LENGTH = 2;
+    private static final int LAST_FRAME_MAX_LENGTH = 3;
+    private static final int STRIKE_FRAME_LENGTH = 1;
     private List<Roll> rolls;
 
     public Game(String[] strings) {
@@ -30,12 +30,12 @@ public class Game {
         Roll firstRoll = rolls.get(roll);
         Roll secondRoll = rolls.get(roll + 1);
         if (isLastFrame(roll)) {
-            return roll + LAST_FRAME_MAX_LENGHT;
+            return roll + LAST_FRAME_MAX_LENGTH;
         }
         if (firstRoll.isStrike() || secondRoll.isSpare()) {
-            return roll + (secondRoll.isSpare() ? FRAME_LENGHT : STRIKE_FRAME_LENGHT);
+            return roll + (secondRoll.isSpare() ? FRAME_LENGTH : STRIKE_FRAME_LENGTH);
         }
-        return roll + FRAME_LENGHT;
+        return roll + FRAME_LENGTH;
     }
 
     private boolean isLastFrame(int roll) {
