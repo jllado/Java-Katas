@@ -8,11 +8,7 @@ public class Game {
     }
 
     public int score() {
-        int score = 0;
-        for (Frame frame : rolls.frames()) {
-            score += frame.score();
-        }
-        return score;
+        return rolls.frames().stream().mapToInt(roll -> roll.score()).sum();
     }
 
 }
