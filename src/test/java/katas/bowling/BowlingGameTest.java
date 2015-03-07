@@ -13,65 +13,68 @@ public class BowlingGameTest {
 
     @Test
     public void get_score_given_game_with_one_frame() throws Exception {
-        assertThat(new Game(new String[]{"1", "-"}).score(), is(1));
+        assertThat(scoreOf("1-"), is(1));
     }
 
     @Test
     public void get_score_given_game_with_two_frames() throws Exception {
-        assertThat(new Game(new String[]{"1", "-", "2", "3"}).score(), is(6));
+        assertThat(scoreOf("1-23"), is(6));
     }
 
     @Test
     public void get_score_given_game_with_three_frames() throws Exception {
-        assertThat(new Game(new String[]{"1", "-", "2", "3", "1", "1"}).score(), is(8));
+        assertThat(scoreOf("1-2311"), is(8));
     }
 
     @Test
     public void get_score_given_game_with_one_spare_frame() throws Exception {
-        assertThat(new Game(new String[]{"1", "/", "2"}).score(), is(12));
-        assertThat(new Game(new String[]{"1", "/", "2", "1"}).score(), is(15));
-        assertThat(new Game(new String[]{"1", "2", "2", "/", "3"}).score(), is(16));
-        assertThat(new Game(new String[]{"1", "/", "2", "1", "3", "4"}).score(), is(22));
-        assertThat(new Game(new String[]{"1", "-", "2", "/", "3", "4"}).score(), is(21));
-        assertThat(new Game(new String[]{"1", "-", "2", "/", "3"}).score(), is(14));
+        assertThat(scoreOf("1/2"), is(12));
+        assertThat(scoreOf("1/21"), is(15));
+        assertThat(scoreOf("122/3"), is(16));
+        assertThat(scoreOf("1/2134"), is(22));
+        assertThat(scoreOf("1-2/34"), is(21));
+        assertThat(scoreOf("1-2/3"), is(14));
     }
 
     @Test
     public void get_score_given_game_with_one_strike_frame() throws Exception {
-        assertThat(new Game(new String[]{"X", "1", "2"}).score(), is(13));
-        assertThat(new Game(new String[]{"X", "2", "2"}).score(), is(14));
-        assertThat(new Game(new String[]{"1", "2", "X", "3", "4"}).score(), is(20));
-        assertThat(new Game(new String[]{"1", "2", "3", "4", "X", "-", "5"}).score(), is(25));
+        assertThat(scoreOf("X12"), is(13));
+        assertThat(scoreOf("X22"), is(14));
+        assertThat(scoreOf("12X34"), is(20));
+        assertThat(scoreOf("1234X-5"), is(25));
     }
 
     @Test
     public void get_score_given_game_with_two_spare_frame() throws Exception {
-        assertThat(new Game(new String[]{"1", "/", "2", "/", "3"}).score(), is(25));
-        assertThat(new Game(new String[]{"1", "/", "2", "/", "3", "1"}).score(), is(29));
-        assertThat(new Game(new String[]{"1", "/", "2", "/", "3", "1", "4", "1"}).score(), is(34));
+        assertThat(scoreOf("1/2/3"), is(25));
+        assertThat(scoreOf("1/2/31"), is(29));
+        assertThat(scoreOf("1/2/3141"), is(34));
     }
 
     @Test
     public void get_score_given_game_with_one_spare_frame_and_one_strike_frame() throws Exception {
-        assertThat(new Game(new String[]{"1", "/", "2", "3", "X", "1", "2"}).score(), is(30));
-        assertThat(new Game(new String[]{"1", "/", "2", "3", "X", "1", "2", "3", "1"}).score(), is(37));
+        assertThat(scoreOf("1/23X12"), is(30));
+        assertThat(scoreOf("1/23X1231"), is(37));
     }
 
     @Test
     public void get_score_given_ten_strikes() throws Exception {
-        assertThat(new Game(new String[]{"X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X"}).score(), is(300));
+        assertThat(scoreOf("XXXXXXXXXXXX"), is(300));
     }
 
     @Test
     public void get_score_given_twenty_rolls() throws Exception {
-        String game = "9-9-9-9-9-9-9-9-9-9-";
-        assertThat(new Game(toArray(game)).score(), is(90));
+        assertThat(scoreOf("9-9-9-9-9-9-9-9-9-9-"), is(90));
     }
 
     @Test
     public void get_score_given_twenty_one_rolls() throws Exception {
         String game = "5/5/5/5/5/5/5/5/5/5/5";
         assertThat(new Game(toArray(game)).score(), is(150));
+    }
+
+    private int scoreOf(String rolls) {
+        return new Game(toArray(rolls)).score();
     }
 
     private String[] toArray(String game) {
