@@ -15,12 +15,12 @@ public class Game {
         int roll = 0;
         while (roll < rolls.length) {
             frames.add(frame(roll));
-            roll = getNextRoll(roll);
+            roll = nextRoll(roll);
         }
         return frames;
     }
 
-    private int getNextRoll(int roll) {
+    private int nextRoll(int roll) {
         Roll firstRoll = new Roll(rolls[roll]);
         Roll secondRoll = new Roll(rolls[roll + 1]);
         if (isLastFrame(roll)) {
