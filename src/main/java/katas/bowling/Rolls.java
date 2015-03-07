@@ -13,10 +13,10 @@ public class Rolls {
 
     private List<Roll> rolls;
 
-    public Rolls(String[] strings) {
+    public Rolls(String[] stringsRolls) {
         rolls = new ArrayList<>();
-        for (String string : strings) {
-            rolls.add(new Roll(string));
+        for (String stringRoll : stringsRolls) {
+            rolls.add(new Roll(stringRoll));
         }
     }
 
