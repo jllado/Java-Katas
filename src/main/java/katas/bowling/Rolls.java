@@ -41,7 +41,7 @@ public class Rolls {
     }
 
     private boolean isLastFrame(int index) {
-        return index + 3 == rolls.size();
+        return index + LAST_FRAME_MAX_LENGTH == rolls.size();
     }
 
     private Frame frame(int index) {
