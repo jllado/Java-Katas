@@ -7,16 +7,19 @@ public class Game {
     private static final int FRAME_LENGHT = 2;
     private static final int LAST_FRAME_MAX_LENGHT = 3;
     private static final int STRIKE_FRAME_LENGHT = 1;
-    private String[] rolls;
+    private List<Roll> rolls;
 
     public Game(String[] strings) {
-        this.rolls = strings;
+        rolls = new ArrayList<>();
+        for (String string : strings) {
+            rolls.add(new Roll(string));
+        }
     }
 
     private List<Frame> frames() {
         List<Frame> frames = new ArrayList<>();
         int roll = 0;
-        while (roll < rolls.length) {
+        while (roll < rolls.size()) {
             frames.add(frame(roll));
             roll = nextRoll(roll);
         }
@@ -24,8 +27,8 @@ public class Game {
     }
 
     private int nextRoll(int roll) {
-        Roll firstRoll = new Roll(rolls[roll]);
-        Roll secondRoll = new Roll(rolls[roll + 1]);
+        Roll firstRoll = rolls.get(roll);
+        Roll secondRoll = rolls.get(roll + 1);
         if (isLastFrame(roll)) {
             return roll + LAST_FRAME_MAX_LENGHT;
         }
@@ -36,18 +39,18 @@ public class Game {
     }
 
     private boolean isLastFrame(int roll) {
-        return roll + 3 == rolls.length;
+        return roll + 3 == rolls.size();
     }
 
     private Frame frame(int roll) {
-        Roll firstRoll = new Roll(rolls[roll]);
-        Roll secondRoll = new Roll(rolls[roll + 1]);
+        Roll firstRoll = rolls.get(roll);
+        Roll secondRoll = rolls.get(roll + 1);
         if (firstRoll.isStrike()) {
-            Roll thirdRoll = new Roll(rolls[roll + 2]);
+            Roll thirdRoll = rolls.get(roll + 2);
             return new StrikeFrame(new Roll[]{firstRoll, secondRoll, thirdRoll});
         }
         if (secondRoll.isSpare()) {
-            Roll thirdRoll = new Roll(rolls[roll + 2]);
+            Roll thirdRoll = rolls.get(roll + 2);
             return new SpareFrame(new Roll[]{firstRoll, secondRoll, thirdRoll});
         }
         return new DefaultFrame(new Roll[]{firstRoll, secondRoll});
