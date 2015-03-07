@@ -39,11 +39,16 @@ public class Game {
     private Frame frame(int roll) {
         Roll firstRoll = new Roll(rolls[roll]);
         Roll secondRoll = new Roll(rolls[roll + 1]);
-        if (firstRoll.isStrike() || secondRoll.isSpare()) {
+        if (firstRoll.isStrike()) {
             Roll thirdRoll = new Roll(rolls[roll + 2]);
-            return new Frame(new Roll[]{firstRoll, secondRoll, thirdRoll});
+            return new StrikeFrame(new Roll[]{firstRoll, secondRoll, thirdRoll});
         }
-        return new Frame(new Roll[]{firstRoll, secondRoll});
+        if (secondRoll.isSpare()) {
+            Roll thirdRoll = new Roll(rolls[roll + 2]);
+            return new SpareFrame(new Roll[]{firstRoll, secondRoll, thirdRoll});
+        }
+
+        return new DefaultFrame(new Roll[]{firstRoll, secondRoll});
     }
 
     public int score() {
