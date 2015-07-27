@@ -20,8 +20,12 @@ import static org.hamcrest.core.Is.is;
 public class RomanNumeralsTest {
     @Test
     public void should_return_I_given_1() throws Exception {
-
         assertThat(getRomanNumeral(1), is("I"));
+    }
+
+    @Test
+    public void should_return_II_given_2() throws Exception {
+        assertThat(getRomanNumeral(2), is("II"));
     }
 
     private String getRomanNumeral(int i) {
