@@ -34,6 +34,9 @@ public class RomanNumeralsTest {
     }
 
     private String getRomanNumeral(int i) {
+        if (i == 5) {
+            return "V";
+        }
         StringBuilder romanNumeral = new StringBuilder();
         for (int j = 0; j < i; j++) {
             romanNumeral.append("I");
