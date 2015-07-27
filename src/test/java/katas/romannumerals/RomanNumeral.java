@@ -10,17 +10,19 @@ public class RomanNumeral {
     public String getValue() {
         String romanNumeral = "";
         int remainDigit = digit;
-        if (remainDigit == 4) {
-            return "IV";
-        }
-        if (remainDigit == 10) {
-            return "X";
-        }
         while (remainDigit > 0) {
-            if (remainDigit == 5) {
-                romanNumeral = "V" + romanNumeral;
+            if (remainDigit / 10 > 0) {
+                romanNumeral += "X";
+                remainDigit -= 10;
+                continue;
+            }
+            if (remainDigit / 5 > 0) {
+                romanNumeral += "V";
                 remainDigit -= 5;
                 continue;
+            }
+            if (remainDigit == 4) {
+                return "IV";
             }
             romanNumeral += "I";
             remainDigit--;
