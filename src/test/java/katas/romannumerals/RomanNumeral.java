@@ -22,7 +22,9 @@ public class RomanNumeral {
                 continue;
             }
             if (remainDigit == 4) {
-                return "IV";
+                romanNumeral += "IV";
+                remainDigit -= 4;
+                continue;
             }
             romanNumeral += "I";
             remainDigit--;
