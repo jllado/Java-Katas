@@ -33,6 +33,11 @@ public class RomanNumeralsTest {
         assertThat(getRomanNumeral(5), is("V"));
     }
 
+    @Test
+    public void should_return_IV_given_4() throws Exception {
+        assertThat(getRomanNumeral(4), is("IV"));
+    }
+
     private String getRomanNumeral(int i) {
         if (i == 5) {
             return "V";
