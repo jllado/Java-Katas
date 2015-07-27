@@ -13,6 +13,9 @@ public class RomanNumeral {
         if (remainDigit == 4) {
             return "IV";
         }
+        if (remainDigit == 10) {
+            return "X";
+        }
         while (remainDigit > 0) {
             if (remainDigit == 5) {
                 romanNumeral = "V" + romanNumeral;
