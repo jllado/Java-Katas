@@ -8,18 +8,19 @@ public class RomanNumeral {
     }
 
     public String getValue() {
-        if (digit == 5) {
-            return "V";
-        }
-        if (digit == 4) {
+        String romanNumeral = "";
+        int remainDigit = digit;
+        if (remainDigit == 4) {
             return "IV";
         }
-        if (digit == 6) {
-            return "VI";
-        }
-        StringBuilder romanNumeral = new StringBuilder();
-        for (int j = 0; j < digit; j++) {
-            romanNumeral.append("I");
+        while (remainDigit > 0) {
+            if (remainDigit == 5) {
+                romanNumeral = "V" + romanNumeral;
+                remainDigit -= 5;
+                continue;
+            }
+            romanNumeral += "I";
+            remainDigit--;
         }
         return romanNumeral.toString();
     }
