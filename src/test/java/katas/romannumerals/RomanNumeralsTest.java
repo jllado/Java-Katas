@@ -18,6 +18,7 @@ import static org.hamcrest.core.Is.is;
 10 - X
  */
 public class RomanNumeralsTest {
+
     @Test
     public void should_return_I_given_1() throws Exception {
         assertThat(getRomanNumeral(1), is("I"));
@@ -39,16 +40,6 @@ public class RomanNumeralsTest {
     }
 
     private String getRomanNumeral(int i) {
-        if (i == 5) {
-            return "V";
-        }
-        if (i == 4) {
-            return "IV";
-        }
-        StringBuilder romanNumeral = new StringBuilder();
-        for (int j = 0; j < i; j++) {
-            romanNumeral.append("I");
-        }
-        return romanNumeral.toString();
+        return new RomanNumeral(i).getValue();
     }
 }
