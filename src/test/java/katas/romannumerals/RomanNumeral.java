@@ -1,6 +1,26 @@
 package katas.romannumerals;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class RomanNumeral {
+    public enum Value {
+        X(10), V(5), I(1);
+
+        private final int digit;
+
+        Value(int i) {
+            this.digit = i;
+        }
+
+        public static List<Value> getValues() {
+            return Arrays.asList(values());
+        }
+
+        public int getDigit() {
+            return digit;
+        }
+    }
     private final int digit;
 
     public RomanNumeral(int digit) {
@@ -11,23 +31,17 @@ public class RomanNumeral {
         String romanNumeral = "";
         int remainDigit = digit;
         while (remainDigit > 0) {
-            if (remainDigit / 10 > 0) {
-                romanNumeral += "X";
-                remainDigit -= 10;
-                continue;
+            for (Value value : Value.getValues()) {
+                if (remainDigit != 0 && remainDigit == value.getDigit() - 1) {
+                    romanNumeral += "I" + value.toString();
+                    remainDigit -= (value.getDigit() - 1);
+                    continue;
+                }
+                if (remainDigit / value.getDigit() > 0) {
+                    romanNumeral += value.toString();
+                    remainDigit -= value.getDigit();
+                }
             }
-            if (remainDigit / 5 > 0) {
-                romanNumeral += "V";
-                remainDigit -= 5;
-                continue;
-            }
-            if (remainDigit == 4) {
-                romanNumeral += "IV";
-                remainDigit -= 4;
-                continue;
-            }
-            romanNumeral += "I";
-            remainDigit--;
         }
         return romanNumeral.toString();
     }
