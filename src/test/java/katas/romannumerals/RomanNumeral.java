@@ -14,6 +14,9 @@ public class RomanNumeral {
         if (digit == 4) {
             return "IV";
         }
+        if (digit == 6) {
+            return "VI";
+        }
         StringBuilder romanNumeral = new StringBuilder();
         for (int j = 0; j < digit; j++) {
             romanNumeral.append("I");
