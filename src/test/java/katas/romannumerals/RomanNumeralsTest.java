@@ -28,6 +28,11 @@ public class RomanNumeralsTest {
         assertThat(getRomanNumeral(2), is("II"));
     }
 
+    @Test
+    public void should_return_V_given_5() throws Exception {
+        assertThat(getRomanNumeral(5), is("V"));
+    }
+
     private String getRomanNumeral(int i) {
         StringBuilder romanNumeral = new StringBuilder();
         for (int j = 0; j < i; j++) {
