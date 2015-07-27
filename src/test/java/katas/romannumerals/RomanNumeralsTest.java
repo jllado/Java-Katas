@@ -29,9 +29,10 @@ public class RomanNumeralsTest {
     }
 
     private String getRomanNumeral(int i) {
-        if (i == 2) {
-            return "II";
+        StringBuilder romanNumeral = new StringBuilder();
+        for (int j = 0; j < i; j++) {
+            romanNumeral.append("I");
         }
-        return "I";
+        return romanNumeral.toString();
     }
 }
