@@ -25,6 +25,6 @@ public class RomanNumeralsTest {
     }
 
     private String getRomanNumeral(int i) {
-        return "";
+        return "I";
     }
 }
