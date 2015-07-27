@@ -14,8 +14,8 @@ import static org.hamcrest.core.Is.is;
 5 - V
 5 - IV
 6 - VI
-9 - IX
 10 - X
+9 - IX
  */
 public class RomanNumeralsTest {
 
@@ -42,6 +42,11 @@ public class RomanNumeralsTest {
     @Test
     public void should_return_VI_given_6() throws Exception {
         assertThat(getRomanNumeral(6), is("VI"));
+    }
+
+    @Test
+    public void should_return_X_given_10() throws Exception {
+        assertThat(getRomanNumeral(10), is("X"));
     }
 
     private String getRomanNumeral(int i) {
