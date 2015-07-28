@@ -23,11 +23,15 @@ public class RomanNumeral {
 
         public Symbol getPreviousValue() {
             for (Symbol symbol : Symbol.getSymbols()) {
-                if (symbol.getDigit() < this.getDigit() && !String.valueOf(symbol.getDigit()).contains("5")) {
+                if (symbol.getDigit() < this.getDigit() && symbol.hasNotFive()) {
                     return symbol;
                 }
             }
             return Symbol.I;
+        }
+
+        private boolean hasNotFive() {
+            return !String.valueOf(this.getDigit()).contains("5");
         }
 
     }
