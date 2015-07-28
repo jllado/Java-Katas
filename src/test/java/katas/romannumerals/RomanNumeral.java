@@ -30,17 +30,15 @@ public class RomanNumeral {
     public String getValue() {
         String romanNumeral = "";
         int remainDigit = digit;
-        while (remainDigit > 0) {
-            for (Value value : Value.getValues()) {
-                if (remainDigit != 0 && remainDigit == value.getDigit() - 1) {
-                    romanNumeral += "I" + value.toString();
-                    remainDigit -= (value.getDigit() - 1);
-                    continue;
-                }
-                if (remainDigit / value.getDigit() > 0) {
-                    romanNumeral += value.toString();
-                    remainDigit -= value.getDigit();
-                }
+        for (Value value : Value.getValues()) {
+            if (remainDigit != 0 && remainDigit == value.getDigit() - 1) {
+                romanNumeral += "I" + value.toString();
+                remainDigit -= (value.getDigit() - 1);
+                continue;
+            }
+            while (remainDigit / value.getDigit() > 0) {
+                romanNumeral += value.toString();
+                remainDigit -= value.getDigit();
             }
         }
         return romanNumeral.toString();
