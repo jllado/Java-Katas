@@ -31,14 +31,13 @@ public class RomanNumeral {
         String romanNumeral = "";
         int remainDigit = digit;
         for (Value value : Value.getValues()) {
-            if (remainDigit != 0 && remainDigit == value.getDigit() - 1) {
-                romanNumeral += "I" + value.toString();
-                remainDigit -= (value.getDigit() - 1);
-                continue;
-            }
             while (remainDigit / value.getDigit() > 0) {
                 romanNumeral += value.toString();
                 remainDigit -= value.getDigit();
+            }
+            if (remainDigit > 0 && remainDigit == value.getDigit() - 1) {
+                romanNumeral += "I" + value.toString();
+                remainDigit -= (value.getDigit() - 1);
             }
         }
         return romanNumeral.toString();
