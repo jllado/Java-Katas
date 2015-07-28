@@ -20,6 +20,16 @@ public class RomanNumeral {
         public int getDigit() {
             return digit;
         }
+
+        public Value getPreviousValue() {
+            for (Value previousValue : Value.getValues()) {
+                if (previousValue.getDigit() < this.getDigit() && !String.valueOf(previousValue.getDigit()).contains("5")) {
+                    return previousValue;
+                }
+            }
+            return Value.I;
+        }
+
     }
     private final int digit;
 
@@ -35,20 +45,12 @@ public class RomanNumeral {
                 romanNumeral += value.toString();
                 remainDigit -= value.getDigit();
             }
-            if (remainDigit > 0 && remainDigit / (value.getDigit() - getPreviousValue(value).getDigit()) > 0) {
-                romanNumeral += getPreviousValue(value) + value.toString();
-                remainDigit -= (value.getDigit() - getPreviousValue(value).getDigit());
+            if (remainDigit > 0 && remainDigit / (value.getDigit() - value.getPreviousValue().getDigit()) > 0) {
+                romanNumeral += value.getPreviousValue() + value.toString();
+                remainDigit -= (value.getDigit() - value.getPreviousValue().getDigit());
             }
         }
         return romanNumeral.toString();
     }
 
-    private Value getPreviousValue(Value value) {
-        for (Value previousValue : Value.getValues()) {
-            if (previousValue.getDigit() < value.getDigit() && !String.valueOf(previousValue.getDigit()).contains("5")) {
-                return previousValue;
-            }
-        }
-        return Value.I;
-    }
 }
