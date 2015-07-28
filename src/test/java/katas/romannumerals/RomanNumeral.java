@@ -21,7 +21,7 @@ public class RomanNumeral {
             return digit;
         }
 
-        public Symbol getPreviousValue() {
+        public Symbol getPreviousSymbol() {
             for (Symbol symbol : Symbol.getSymbols()) {
                 if (symbol.getDigit() < this.getDigit() && symbol.hasNotFive()) {
                     return symbol;
@@ -35,12 +35,26 @@ public class RomanNumeral {
         }
 
 
-        public int getPreviousDigit() {
-            return this.getDigit() - this.getPreviousValue().getDigit();
+        private int getPreviousDigit() {
+            return this.getDigit() - this.getPreviousSymbol().getDigit();
+        }
+
+        public boolean isPreviousDivisibleBy(int remainDigit) {
+            return areDivisible(remainDigit, this.getPreviousDigit());
+        }
+
+
+        public boolean isDivisibleBy(int remainDigit) {
+            return areDivisible(remainDigit, this.getDigit());
+        }
+
+        private boolean areDivisible(int firstDigit, int secondDigit) {
+            return firstDigit / secondDigit > 0;
         }
 
 
     }
+    
     private final int digit;
 
     public RomanNumeral(int digit) {
@@ -51,12 +65,12 @@ public class RomanNumeral {
         String romanNumeral = "";
         int remainDigit = digit;
         for (Symbol symbol : Symbol.getSymbols()) {
-            while (remainDigit / symbol.getDigit() > 0) {
+            while (symbol.isDivisibleBy(remainDigit)) {
                 romanNumeral += symbol;
                 remainDigit -= symbol.getDigit();
             }
-            if (remainDigit > 0 && remainDigit / (symbol.getPreviousDigit()) > 0) {
-                romanNumeral += symbol.getPreviousValue() + symbol.toString();
+            if (remainDigit > 0 && symbol.isPreviousDivisibleBy(remainDigit)) {
+                romanNumeral += symbol.getPreviousSymbol() + symbol.toString();
                 remainDigit -= symbol.getPreviousDigit();
             }
         }
