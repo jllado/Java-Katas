@@ -40,7 +40,7 @@ public class RomanNumeral {
         }
 
         public boolean isPreviousDivisibleBy(int remainDigit) {
-            return areDivisible(remainDigit, this.getPreviousDigit());
+            return remainDigit > 0 && areDivisible(remainDigit, this.getPreviousDigit());
         }
 
 
@@ -55,7 +55,6 @@ public class RomanNumeral {
         private String toPreviousSymbol() {
             return this.getPreviousSymbol() + this.toString();
         }
-
 
     }
 
@@ -73,7 +72,7 @@ public class RomanNumeral {
                 romanNumeral += symbol;
                 remainDigit -= symbol.getDigit();
             }
-            if (remainDigit > 0 && symbol.isPreviousDivisibleBy(remainDigit)) {
+            if (symbol.isPreviousDivisibleBy(remainDigit)) {
                 romanNumeral += symbol.toPreviousSymbol();
                 remainDigit -= symbol.getPreviousDigit();
             }
