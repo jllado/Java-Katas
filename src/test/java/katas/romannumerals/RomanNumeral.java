@@ -34,6 +34,12 @@ public class RomanNumeral {
             return !String.valueOf(this.getDigit()).contains("5");
         }
 
+
+        public int getPreviousDigit() {
+            return this.getDigit() - this.getPreviousValue().getDigit();
+        }
+
+
     }
     private final int digit;
 
@@ -46,12 +52,12 @@ public class RomanNumeral {
         int remainDigit = digit;
         for (Symbol symbol : Symbol.getSymbols()) {
             while (remainDigit / symbol.getDigit() > 0) {
-                romanNumeral += symbol.toString();
+                romanNumeral += symbol;
                 remainDigit -= symbol.getDigit();
             }
-            if (remainDigit > 0 && remainDigit / (symbol.getDigit() - symbol.getPreviousValue().getDigit()) > 0) {
+            if (remainDigit > 0 && remainDigit / (symbol.getPreviousDigit()) > 0) {
                 romanNumeral += symbol.getPreviousValue() + symbol.toString();
-                remainDigit -= (symbol.getDigit() - symbol.getPreviousValue().getDigit());
+                remainDigit -= symbol.getPreviousDigit();
             }
         }
         return romanNumeral.toString();
