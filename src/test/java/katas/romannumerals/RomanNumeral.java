@@ -52,9 +52,13 @@ public class RomanNumeral {
             return firstDigit / secondDigit > 0;
         }
 
+        private String toPreviousSymbol() {
+            return this.getPreviousSymbol() + this.toString();
+        }
+
 
     }
-    
+
     private final int digit;
 
     public RomanNumeral(int digit) {
@@ -70,7 +74,7 @@ public class RomanNumeral {
                 remainDigit -= symbol.getDigit();
             }
             if (remainDigit > 0 && symbol.isPreviousDivisibleBy(remainDigit)) {
-                romanNumeral += symbol.getPreviousSymbol() + symbol.toString();
+                romanNumeral += symbol.toPreviousSymbol();
                 remainDigit -= symbol.getPreviousDigit();
             }
         }
