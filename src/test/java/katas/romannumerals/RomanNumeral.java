@@ -36,7 +36,7 @@ public class RomanNumeral {
                 remainDigit -= value.getDigit();
             }
             if (remainDigit > 0 && remainDigit == value.getDigit() - 1) {
-                romanNumeral += "I" + value.toString();
+                romanNumeral += Value.I + value.toString();
                 remainDigit -= (value.getDigit() - 1);
             }
         }
