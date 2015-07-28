@@ -54,6 +54,16 @@ public class RomanNumeralsTest {
         assertThat(getRomanNumeral(14), is("XIV"));
     }
 
+    @Test
+    public void should_return_IX_given_9() throws Exception {
+        assertThat(getRomanNumeral(9), is("IX"));
+    }
+
+    @Test
+    public void should_return_XX_given_20() throws Exception {
+        assertThat(getRomanNumeral(20), is("XX"));
+    }
+
     private String getRomanNumeral(int i) {
         return new RomanNumeral(i).getValue();
     }
