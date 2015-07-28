@@ -15,3 +15,6 @@ http://craftsmanship.sv.cmu.edu/katas/prime-factors-kata
 
 Kata: Bownling
 http://codingdojo.org/cgi-bin/index.pl?KataBowling
+
+Kata: Roman Numerals
+http://www.codingdojo.org/cgi-bin/index.pl?KataRomanNumerals
