@@ -4,6 +4,11 @@
     <groupId>juanllado</groupId>
     <artifactId>katas</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <properties>
+        <sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
+        <sonar.junit.reportsPath>${project.build.directory}/surefire-reports/</sonar.junit.reportsPath>
+        <sonar.jacoco.reportpath>${project.build.directory}/jacoco.exec</sonar.jacoco.reportpath>
+    </properties>
     <build>
         <pluginManagement>
             <plugins>
@@ -15,6 +20,31 @@
                         <source>1.8</source>
                         <target>1.8</target>
                     </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.jacoco</groupId>
+                    <artifactId>jacoco-maven-plugin</artifactId>
+                    <version>0.7.5.201505241946</version>
+                    <configuration>
+                        <destFile>${sonar.jacoco.reportpath}</destFile>
+                        <dataFile>${sonar.jacoco.reportpath}</dataFile>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <id>jacoco-initialize</id>
+                            <phase>test-compile</phase>
+                            <goals>
+                                <goal>prepare-agent</goal>
+                            </goals>
+                        </execution>
+                        <execution>
+                            <id>jacoco-site</id>
+                            <phase>test</phase>
+                            <goals>
+                                <goal>report</goal>
+                            </goals>
+                        </execution>
+                    </executions>
                 </plugin>
             </plugins>
 
